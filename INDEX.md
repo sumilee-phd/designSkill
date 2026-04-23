@@ -53,7 +53,7 @@
 - [`parent-formal`](./presets/education/parent-formal.md) — 학부모 안내 · 공식
 - [`student-vibrant`](./presets/education/student-vibrant.md) — 고등학생 · 생동감
 
-## 🎯 10개 교사 시나리오 예제
+## 🎯 11개 교사 시나리오 예제
 
 1. [`01-class-landing`](./examples/01-class-landing.md) — 학급 홍보 페이지
 2. [`02-quiz-app`](./examples/02-quiz-app.md) — 수업용 퀴즈 앱
@@ -65,6 +65,7 @@
 8. [`08-timetable`](./examples/08-timetable.md) — 시간표 관리
 9. [`09-event-invite`](./examples/09-event-invite.md) — 학교 행사 초대장
 10. [`10-subject-hub`](./examples/10-subject-hub.md) — 교과 자료 허브
+11. [`11-meal-app`](./examples/11-meal-app.md) — **급식앱 🍱** (NEIS 연동 · 18개 알레르기 지원)
 
 ## 📁 템플릿
 
