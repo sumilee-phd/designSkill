@@ -1,680 +1,1115 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>designSkill — 내 교실을 바꾸는 AI 디자인 스킬 팩</title>
-<meta name="description" content="한국 교사를 위한 올인원 AI 디자인 스킬. 14개 스킬 · 16개 프리셋 · 10개 예제. Stitch · Claude · Gemini 지원." />
-<meta property="og:title" content="designSkill — 내 교실을 바꾸는 AI 디자인 스킬 팩" />
-<meta property="og:description" content="씨마스에듀 연수 4회차 실습 공식 스킬 팩. Stitch → GitHub → Vercel 배포까지." />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#FFF8F5" />
+<title>내 교실을 바꾸는 최강 구글 AI 비서 TOP 6 · 씨마스에듀 연수</title>
+<meta name="description" content="구글 Opal · Gems · Mixboard · Flow · Stitch · AI Studio를 하나의 서비스로 완성하는 통합 워크숍. 2026년 5월, 실시간 Zoom 10시간 + 사전 VOD 2시간." />
+<meta property="og:title" content="내 교실을 바꾸는 최강 구글 AI 비서 TOP 6" />
+<meta property="og:description" content="구글 제미나이 The Next Level · 씨마스에듀 연수 · 이수미 · 김남희 주임강사" />
 <meta property="og:type" content="website" />
-
-<link rel="preconnect" href="https://cdn.jsdelivr.net" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" />
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
-
 <style>
-  :root {
-    --font-sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont,
-                 system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo',
-                 'Noto Sans KR', 'Malgun Gothic', sans-serif;
-    --peach:   #FFB4A2;
-    --apricot: #FFCDB2;
-    --coral:   #FF8A65;
-    --mint:    #B5EAD7;
-    --lavender:#C7CEEA;
-    --lemon:   #FFDFB9;
-    --cream:   #FFF8F0;
-    --ink:     #3E3A39;
-    --ink-2:   #6B6461;
-  }
-  html, body, * { font-family: var(--font-sans); word-break: keep-all; overflow-wrap: break-word; }
-  body { background: var(--cream); color: var(--ink); }
-  h1, h2, h3, h4 { letter-spacing: -0.025em; line-height: 1.2; }
-  p, li { line-height: 1.75; letter-spacing: -0.01em; }
+:root {
+  --primary:#7C3AED;
+  --primary-active:#A78BFA;
+  --primary-dark:#5B21B6;
+  --secondary:#FF8A65;
+  --secondary-strong:#E06B4A;
+  --accent-peach:#FFB4A2;
+  --accent-coral:#FFCDB2;
+  --accent-mint:#B5EAD7;
+  --accent-lavender:#C7CEEA;
+  --accent-lemon:#FFDFB9;
+  --ai-green:#22C55E;
+  --ai-green-soft:#86EFAC;
+  --neutral:#FFF8F5;
+  --bg:#FFF8F5;
+  --bg-depth:#FDF1EC;
+  --bg-warm:#F5F0FF;
+  --surface:#FFFFFF;
+  --surface-soft:#FFFAF6;
+  --surface-inset:#F5EDFF;
+  --text:#2A2640;
+  --text-strong:#1C1A2E;
+  --muted:#6B6186;
+  --muted-soft:#9B92B5;
+  --border:#E5D9E9;
+  --border-strong:#CBB8D6;
+  --dark-bg:#1E1B2E;
+  --dark-depth:#1A1729;
+  --dark-card:#2A2640;
+  --dark-soft:#231F36;
+  --dark-text:#E8E0FF;
+  --dark-strong:#F7F3FF;
+  --dark-muted:#A79ECB;
+  --dark-border:#3D3654;
+  --radius-xs:8px;
+  --radius-sm:12px;
+  --radius-md:18px;
+  --radius-lg:24px;
+  --radius-xl:30px;
+  --radius-full:9999px;
+  --page-max:430px;
+  --shadow-soft:0 16px 55px rgba(124,58,237,.12);
+  --shadow-card:0 12px 34px rgba(124,58,237,.09);
+  --shadow-peach:0 14px 40px rgba(255,138,101,.2);
+  --serif:"Noto Serif KR", "Source Han Serif KR", "AppleMyungjo", "Georgia", serif;
+  --sans:"Pretendard Variable", "Pretendard", "Apple SD Gothic Neo", "Segoe UI", system-ui, sans-serif;
+}
+[data-theme="dark"] {
+  --bg:#1E1B2E;
+  --bg-depth:#1A1729;
+  --bg-warm:#2A2640;
+  --surface:#2A2640;
+  --surface-soft:#231F36;
+  --surface-inset:#15111F;
+  --text:#E8E0FF;
+  --text-strong:#F7F3FF;
+  --muted:#A79ECB;
+  --muted-soft:#7E7599;
+  --border:#3D3654;
+  --border-strong:#5B4D7A;
+  --primary:#A78BFA;
+  --primary-active:#C4B5FD;
+  --secondary:#FFB185;
+  --secondary-strong:#FF9568;
+  --shadow-soft:0 18px 60px rgba(0,0,0,.44);
+  --shadow-card:0 16px 46px rgba(0,0,0,.35);
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0;
+  background:
+    radial-gradient(circle at 14% -4%, rgba(124,58,237,.14), transparent 32%),
+    radial-gradient(circle at 92% 8%, rgba(255,138,101,.16), transparent 30%),
+    radial-gradient(circle at 50% 98%, rgba(181,234,215,.22), transparent 34%),
+    linear-gradient(180deg, var(--bg), var(--bg-depth));
+  color:var(--text);
+  font-family:var(--sans);
+  word-break:keep-all;
+  overflow-wrap:break-word;
+  padding:0 0 calc(86px + env(safe-area-inset-bottom));
+}
+body::before {
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.38;
+  background-image:
+    linear-gradient(115deg, transparent 0 42%, rgba(124,58,237,.06) 43%, transparent 46%),
+    radial-gradient(circle at 10% 90%, rgba(255,180,162,.14), transparent 26%);
+  mix-blend-mode:multiply;
+}
+[data-theme="dark"] body::before { mix-blend-mode:screen; opacity:.18; }
+a { color:inherit; text-decoration:none; }
+button { font:inherit; cursor:pointer; }
+.app-shell {
+  width:min(100%, var(--page-max));
+  margin:0 auto;
+  position:relative;
+  min-height:100vh;
+}
+/* ─ Header ─ */
+.reader-header {
+  position:sticky;
+  top:0;
+  z-index:40;
+  min-height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:12px 14px 9px;
+  backdrop-filter:blur(18px);
+  background:color-mix(in srgb, var(--bg) 86%, transparent);
+  border-bottom:1px solid color-mix(in srgb, var(--border) 72%, transparent);
+}
+.header-left,.header-actions { display:flex; align-items:center; gap:8px; }
+.icon-btn {
+  border:1px solid color-mix(in srgb, var(--border) 78%, transparent);
+  background:color-mix(in srgb, var(--surface) 90%, transparent);
+  color:var(--text-strong);
+  height:40px;width:40px;
+  border-radius:var(--radius-full);
+  display:grid;place-items:center;
+  box-shadow:0 6px 20px rgba(124,58,237,.08);
+  font-size:16px;
+}
+.icon-btn:active,.primary-btn:active { transform:translateY(1px) scale(.99); }
+.header-title { text-align:center; min-width:0; flex:1; }
+.header-title strong { display:block; color:var(--text-strong); font-size:13px; font-weight:850; letter-spacing:-.01em; }
+.header-title span { display:block; color:var(--muted); font-size:11px; font-weight:700; margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.progress { position:absolute; left:0; right:0; bottom:-1px; height:2px; background:transparent; }
+.progress > i { display:block; height:100%; width:0%; background:linear-gradient(90deg,var(--primary),var(--secondary)); transition:width .08s linear; }
 
-  .soft-shadow { box-shadow: 0 6px 20px -8px rgba(255,138,101,0.25); }
-  .soft-shadow-lg { box-shadow: 0 20px 40px -12px rgba(255,138,101,0.3); }
+/* ─ Cover / Hero ─ */
+.cover { padding:18px 16px 24px; min-height:calc(100svh - 64px); display:flex; flex-direction:column; }
+.chips { display:flex; gap:8px; flex-wrap:wrap; margin:4px 0 20px; }
+.chip {
+  display:inline-flex;align-items:center;gap:5px;
+  height:30px;padding:0 12px;
+  border-radius:var(--radius-full);
+  background:var(--surface-inset);
+  color:var(--primary);
+  border:1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  font-size:12px;font-weight:820;
+}
+.chip.ai-green {
+  background:color-mix(in srgb, var(--ai-green) 12%, var(--surface));
+  color:color-mix(in srgb, var(--ai-green) 88%, var(--text-strong));
+  border-color:color-mix(in srgb, var(--ai-green) 34%, transparent);
+}
+.hero-panel {
+  flex:1;
+  border-radius:var(--radius-xl);
+  padding:28px 22px 24px;
+  background:
+    radial-gradient(circle at 98% 68%, rgba(181,234,215,.28), transparent 38%),
+    radial-gradient(circle at 10% 2%, rgba(199,206,234,.32), transparent 40%),
+    radial-gradient(circle at 85% 95%, rgba(255,180,162,.26), transparent 36%),
+    linear-gradient(180deg,var(--surface),var(--surface-soft));
+  border:1px solid color-mix(in srgb, var(--border) 64%, transparent);
+  box-shadow:var(--shadow-soft);
+  position:relative;
+  overflow:hidden;
+}
+.hero-panel::after {
+  content:"";
+  position:absolute;right:-44px;bottom:-54px;width:210px;height:210px;border-radius:50%;
+  border:1px solid color-mix(in srgb, var(--primary) 22%, transparent);
+  background:radial-gradient(circle, rgba(124,58,237,.12), transparent 65%);
+}
+.hero-kicker {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:6px 14px;
+  border-radius:var(--radius-full);
+  background:color-mix(in srgb, var(--primary) 10%, var(--surface));
+  color:var(--primary);
+  font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;
+  margin-bottom:18px;
+  border:1px solid color-mix(in srgb, var(--primary) 22%, transparent);
+}
+.hero-kicker .dot { width:6px; height:6px; border-radius:50%; background:var(--secondary); animation:pulse 2s ease-in-out infinite; }
+@keyframes pulse { 50% { transform:scale(1.4); opacity:.6; } }
+.hero-panel h1 {
+  position:relative;z-index:1;
+  font-family:var(--serif);
+  font-weight:900;
+  color:var(--text-strong);
+  letter-spacing:-.058em;
+  line-height:1.13;
+  font-size:clamp(40px, 11vw, 56px);
+  margin:0 0 14px;
+}
+.hero-panel h1 .ai-accent {
+  color:var(--ai-green);
+  font-family:var(--serif);
+}
+.hero-panel h1 .top-badge {
+  display:inline-block;
+  margin-left:6px;
+  padding:2px 14px 3px;
+  background:linear-gradient(135deg, var(--primary), var(--ai-green));
+  color:white;
+  border-radius:var(--radius-full);
+  font-size:.58em;
+  vertical-align:middle;
+}
+.hero-subtitle { position:relative;z-index:1; margin:0; color:var(--muted); line-height:1.68; font-weight:600; font-size:15px; }
+.hero-quote {
+  position:relative;z-index:1;
+  margin:32px 0 28px;
+  padding-left:18px;
+  border-left:4px solid var(--primary);
+  font-family:var(--serif);
+  color:var(--text-strong);
+  font-size:19px;
+  font-weight:850;
+  line-height:1.58;
+  letter-spacing:-.028em;
+}
+.hero-meta { position:relative;z-index:1; display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:auto; }
+.meta-item { border-top:1px solid color-mix(in srgb,var(--border) 70%,transparent); padding-top:12px; }
+.meta-item span { display:block; color:var(--muted-soft); font-size:11px; font-weight:750; }
+.meta-item strong { display:block; margin-top:5px; color:var(--text-strong); font-size:13px; font-weight:850; }
 
-  .gradient-peach { background: linear-gradient(135deg, #FFB4A2 0%, #FF8A65 100%); }
-  .gradient-soft  { background: linear-gradient(135deg, #FFF8F0 0%, #FFE8E0 50%, #F8E8F5 100%); }
-  .text-gradient {
-    background: linear-gradient(135deg, #FF8A65 0%, #C7CEEA 100%);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-  }
+/* ─ Section ─ */
+.section { padding:22px 16px; }
+.section-head { display:flex; justify-content:space-between; align-items:end; gap:12px; margin-bottom:14px; }
+.section-head h2 {
+  margin:0;
+  color:var(--text-strong);
+  font-family:var(--serif);
+  font-size:24px;
+  line-height:1.32;
+  letter-spacing:-.036em;
+  font-weight:900;
+}
+.section-head p { margin:6px 0 0; color:var(--muted); line-height:1.62; font-size:13px; font-weight:600; }
+.mini-label {
+  color:var(--primary);
+  font-size:11px;
+  line-height:1.15;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
 
-  @keyframes fade-up {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .reveal { opacity: 0; }
-  .reveal.is-visible { animation: fade-up 0.7s ease-out forwards; }
+/* ─ Benefits (3 cards) ─ */
+.benefit-grid { display:grid; gap:12px; }
+.benefit-card {
+  position:relative;
+  border-radius:var(--radius-lg);
+  padding:20px 18px;
+  background:var(--surface);
+  border:1px solid color-mix(in srgb, var(--border) 72%, transparent);
+  box-shadow:var(--shadow-card);
+  overflow:hidden;
+}
+.benefit-card .benefit-icon {
+  width:44px; height:44px; border-radius:var(--radius-md);
+  display:grid; place-items:center;
+  font-size:22px;
+  margin-bottom:12px;
+}
+.benefit-card h3 {
+  margin:0 0 6px;
+  color:var(--text-strong);
+  font-size:17px;
+  font-weight:900;
+  letter-spacing:-.025em;
+}
+.benefit-card p { margin:0; color:var(--muted); font-size:13px; line-height:1.64; font-weight:600; }
+.benefit-card.peach .benefit-icon { background:color-mix(in srgb, var(--accent-peach) 40%, var(--surface)); color:var(--secondary-strong); }
+.benefit-card.lavender .benefit-icon { background:color-mix(in srgb, var(--accent-lavender) 60%, var(--surface)); color:var(--primary); }
+.benefit-card.mint .benefit-icon { background:color-mix(in srgb, var(--accent-mint) 60%, var(--surface)); color:#0F7A5A; }
 
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50%      { transform: translateY(-10px); }
-  }
-  .float { animation: float 4s ease-in-out infinite; }
+/* ─ Pricing ─ */
+.pricing-grid { display:grid; gap:12px; }
+.price-card {
+  border-radius:var(--radius-lg);
+  padding:20px;
+  border:2px solid color-mix(in srgb, var(--border) 72%, transparent);
+  background:var(--surface);
+  box-shadow:var(--shadow-card);
+  position:relative;
+}
+.price-card.active {
+  border-color:var(--secondary);
+  background:linear-gradient(180deg, color-mix(in srgb, var(--accent-peach) 22%, var(--surface)), var(--surface));
+  box-shadow:var(--shadow-peach);
+}
+.price-card.active::before {
+  content:"🔥 지금 이 가격!";
+  position:absolute;
+  top:-12px; left:20px;
+  background:linear-gradient(135deg, var(--secondary), #FF6347);
+  color:white;
+  padding:4px 12px;
+  border-radius:var(--radius-full);
+  font-size:11px;
+  font-weight:900;
+}
+.price-card h3 {
+  margin:0 0 4px;
+  color:var(--text-strong);
+  font-size:16px;
+  font-weight:900;
+}
+.price-card .price-original {
+  color:var(--muted-soft);
+  text-decoration:line-through;
+  font-size:14px;
+  font-weight:700;
+}
+.price-card .price-now {
+  margin-top:4px;
+  font-size:36px;
+  font-weight:900;
+  color:var(--text-strong);
+  letter-spacing:-.04em;
+  line-height:1;
+}
+.price-card.active .price-now { color:var(--secondary-strong); }
+.price-card.gen .price-now { color:var(--primary); }
+.price-card .price-unit { font-size:18px; margin-left:2px; font-weight:850; }
+.price-card .price-period { margin-top:10px; color:var(--muted); font-size:12px; font-weight:700; }
 
-  .blob {
-    position: absolute; border-radius: 50%;
-    filter: blur(80px); opacity: 0.5; z-index: 0; pointer-events: none;
-  }
+/* ─ Schedule summary ─ */
+.schedule-card {
+  display:flex; gap:14px; align-items:flex-start;
+  padding:16px;
+  border-radius:var(--radius-lg);
+  background:var(--surface);
+  border:1px solid color-mix(in srgb, var(--border) 72%, transparent);
+  box-shadow:var(--shadow-card);
+  margin-bottom:10px;
+}
+.schedule-card .sc-icon {
+  width:42px; height:42px; flex:0 0 auto;
+  border-radius:var(--radius-md);
+  display:grid; place-items:center;
+  background:color-mix(in srgb, var(--primary) 12%, var(--surface));
+  color:var(--primary);
+  font-size:20px;
+}
+.schedule-card .sc-body { flex:1; min-width:0; }
+.schedule-card .sc-label { color:var(--primary); font-size:11px; font-weight:900; letter-spacing:.07em; text-transform:uppercase; }
+.schedule-card h3 { margin:3px 0 4px; color:var(--text-strong); font-size:15px; font-weight:900; }
+.schedule-card p { margin:0; color:var(--muted); font-size:13px; line-height:1.55; font-weight:600; }
 
-  details > summary::-webkit-details-marker { display: none; }
-  details > summary { list-style: none; cursor: pointer; }
+/* ─ Target / Requirements ─ */
+.req-card {
+  border-radius:var(--radius-lg);
+  padding:16px;
+  background:var(--surface);
+  border:1px solid color-mix(in srgb, var(--border) 72%, transparent);
+  box-shadow:var(--shadow-card);
+}
+.req-card h3 {
+  margin:0 0 10px;
+  display:flex; align-items:center; gap:8px;
+  color:var(--text-strong);
+  font-size:16px;
+  font-weight:900;
+}
+.req-card h3 .icon {
+  width:30px; height:30px; border-radius:var(--radius-full);
+  background:color-mix(in srgb, var(--primary) 12%, var(--surface));
+  color:var(--primary);
+  display:grid; place-items:center;
+  font-size:15px;
+}
+.req-card ul { margin:0; padding:0; list-style:none; display:grid; gap:8px; }
+.req-card li {
+  display:flex; gap:10px;
+  color:var(--text); font-size:14px; line-height:1.55; font-weight:650;
+}
+.req-card li::before {
+  content:"▸";
+  color:var(--primary);
+  flex:0 0 auto;
+  font-weight:900;
+}
+.warning-box {
+  margin-top:12px;
+  padding:10px 12px;
+  border-radius:var(--radius-md);
+  background:color-mix(in srgb, var(--secondary) 10%, var(--surface));
+  border:1px solid color-mix(in srgb, var(--secondary) 40%, transparent);
+  color:var(--secondary-strong);
+  font-size:12px;
+  font-weight:850;
+}
 
-  .scroll-smooth { scroll-behavior: smooth; }
+/* ─ Curriculum Timeline (5 sessions) ─ */
+.curriculum-group {
+  margin-bottom:24px;
+}
+.curriculum-group .cg-head {
+  padding:12px 16px;
+  border-radius:var(--radius-md);
+  background:linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color:white;
+  font-weight:900;
+  font-size:14px;
+  line-height:1.4;
+  margin-bottom:12px;
+  box-shadow:0 8px 24px rgba(124,58,237,.25);
+}
+.curriculum-group.stageIII .cg-head {
+  background:linear-gradient(135deg, var(--secondary), #FF5E5B);
+}
+.session-card {
+  position:relative;
+  padding:14px 16px 14px 52px;
+  border-radius:var(--radius-lg);
+  background:var(--surface);
+  border:1px solid color-mix(in srgb, var(--border) 74%, transparent);
+  box-shadow:var(--shadow-card);
+  margin-bottom:10px;
+  display:block;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.session-card.active {
+  border-color:color-mix(in srgb, var(--primary) 50%, transparent);
+  background:linear-gradient(180deg, color-mix(in srgb, var(--primary) 5%, var(--surface)), var(--surface));
+}
+.session-card.active:hover {
+  transform:translateY(-3px);
+  box-shadow:0 20px 50px rgba(124,58,237,.2);
+}
+.session-card .sess-num {
+  position:absolute;
+  left:10px; top:12px;
+  width:32px; height:32px;
+  border-radius:var(--radius-full);
+  background:var(--primary);
+  color:white;
+  display:grid; place-items:center;
+  font-weight:900; font-size:14px;
+}
+.session-card.vod .sess-num { background:var(--muted); }
+.session-card.active .sess-num { background:linear-gradient(135deg, var(--primary), var(--ai-green)); }
+.session-card .sess-date { color:var(--primary); font-size:12px; font-weight:900; margin-bottom:2px; }
+.session-card .sess-time { color:var(--muted-soft); font-size:11px; font-weight:700; margin-left:8px; }
+.session-card h3 { margin:4px 0 6px; color:var(--text-strong); font-size:15px; line-height:1.4; font-weight:900; letter-spacing:-.02em; }
+.session-card ul { margin:0 0 8px; padding-left:16px; color:var(--muted); font-size:12px; line-height:1.55; font-weight:600; }
+.session-card .sess-foot {
+  display:flex; gap:6px; flex-wrap:wrap;
+  margin-top:6px;
+}
+.tool-chip {
+  padding:3px 10px;
+  border-radius:var(--radius-full);
+  background:var(--surface-inset);
+  color:var(--primary);
+  font-size:11px;
+  font-weight:850;
+  border:1px solid color-mix(in srgb, var(--border) 70%, transparent);
+}
+.instructor-chip {
+  padding:3px 10px;
+  border-radius:var(--radius-full);
+  background:color-mix(in srgb, var(--accent-peach) 30%, var(--surface));
+  color:var(--secondary-strong);
+  font-size:11px;
+  font-weight:850;
+  margin-left:auto;
+}
+.cta-arrow {
+  display:inline-flex; align-items:center; gap:4px;
+  margin-top:8px;
+  padding:8px 14px;
+  border-radius:var(--radius-full);
+  background:linear-gradient(135deg, var(--primary), var(--ai-green));
+  color:white;
+  font-size:12px;
+  font-weight:900;
+  box-shadow:0 8px 24px rgba(124,58,237,.3);
+}
+
+/* ─ Outcomes (5 tools) ─ */
+.outcomes-panel {
+  margin:12px 0;
+  padding:22px 16px 20px;
+  border-radius:var(--radius-xl);
+  background:
+    radial-gradient(circle at 85% 15%, rgba(181,234,215,.3), transparent 30%),
+    radial-gradient(circle at 15% 85%, rgba(199,206,234,.35), transparent 32%),
+    linear-gradient(180deg, var(--surface), var(--surface-soft));
+  border:1px solid color-mix(in srgb, var(--border) 64%, transparent);
+  box-shadow:var(--shadow-soft);
+}
+.outcomes-panel h2 {
+  margin:0 0 4px;
+  font-family:var(--serif);
+  color:var(--text-strong);
+  font-size:22px;
+  font-weight:900;
+  letter-spacing:-.035em;
+  text-align:center;
+}
+.outcomes-panel .subtitle { margin:0 0 20px; color:var(--muted); font-size:13px; text-align:center; font-weight:600; }
+.tool-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.tool-item {
+  padding:14px 12px;
+  border-radius:var(--radius-md);
+  background:var(--surface);
+  border:1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  text-align:center;
+}
+.tool-item.wide { grid-column:1/-1; }
+.tool-item .tool-name {
+  color:var(--ai-green);
+  font-size:15px;
+  font-weight:900;
+  letter-spacing:-.015em;
+  margin-bottom:2px;
+}
+.tool-item.stitch .tool-name { color:#0EA5E9; }
+.tool-item.mix .tool-name { color:var(--secondary-strong); }
+.tool-item.opal .tool-name { color:var(--primary); }
+.tool-item.aist .tool-name { color:#6366F1; }
+.tool-item p { margin:0; color:var(--muted); font-size:11.5px; font-weight:650; line-height:1.4; }
+
+/* ─ Special Gift ─ */
+.gift-panel {
+  margin:12px 0;
+  padding:20px 18px;
+  border-radius:var(--radius-xl);
+  background:linear-gradient(135deg, color-mix(in srgb, var(--accent-peach) 18%, var(--surface)), var(--surface));
+  border:2px dashed color-mix(in srgb, var(--secondary) 40%, transparent);
+  position:relative;
+  overflow:hidden;
+}
+.gift-panel::before {
+  content:"Special Gift";
+  position:absolute;
+  top:-2px; left:20px;
+  background:linear-gradient(135deg, #FF5E5B, var(--secondary));
+  color:white;
+  padding:6px 16px 7px;
+  border-radius:0 0 var(--radius-md) var(--radius-md);
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.05em;
+}
+.gift-panel h3 {
+  margin:20px 0 10px;
+  color:var(--text-strong);
+  font-size:16px;
+  font-weight:900;
+  line-height:1.4;
+  letter-spacing:-.02em;
+}
+.gift-panel .gift-main {
+  margin:10px 0;
+  padding:10px 14px;
+  border-radius:var(--radius-md);
+  background:var(--surface);
+  border:1px solid color-mix(in srgb, var(--secondary) 30%, transparent);
+  color:var(--secondary-strong);
+  font-size:14px;
+  font-weight:900;
+  display:flex; align-items:center; gap:8px;
+}
+.gift-panel ol { margin:12px 0 0; padding-left:22px; color:var(--text); font-size:13px; line-height:1.65; font-weight:600; }
+.gift-panel ol li { margin:5px 0; }
+
+/* ─ Refund ─ */
+.refund-card {
+  margin:12px 0;
+  padding:16px;
+  border-radius:var(--radius-lg);
+  background:color-mix(in srgb, #EF4444 6%, var(--surface));
+  border:1px solid color-mix(in srgb, #EF4444 25%, transparent);
+}
+.refund-card h3 {
+  margin:0 0 6px;
+  display:flex; align-items:center; gap:8px;
+  color:#DC2626;
+  font-size:15px;
+  font-weight:900;
+}
+.refund-card p { margin:0; color:var(--text); font-size:13px; line-height:1.6; font-weight:600; }
+.refund-card strong { color:#DC2626; font-weight:900; }
+
+/* ─ Quote ─ */
+.closing-quote {
+  margin:28px 16px 12px;
+  padding:24px 20px;
+  border-radius:var(--radius-xl);
+  background:
+    radial-gradient(circle at 90% 90%, rgba(124,58,237,.08), transparent 40%),
+    linear-gradient(180deg, var(--surface-soft), var(--surface));
+  border:1px solid color-mix(in srgb, var(--border) 64%, transparent);
+  text-align:center;
+}
+.closing-quote p {
+  margin:0;
+  font-family:var(--serif);
+  color:var(--text-strong);
+  font-size:18px;
+  font-weight:850;
+  line-height:1.55;
+  letter-spacing:-.025em;
+}
+.closing-quote .sig {
+  margin-top:12px;
+  display:inline-block;
+  padding:4px 14px;
+  background:var(--surface-inset);
+  border-radius:var(--radius-full);
+  color:var(--primary);
+  font-size:12px;
+  font-weight:900;
+}
+
+/* ─ Bottom bar ─ */
+.bottom-bar {
+  position:fixed;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:0;
+  width:min(100%, var(--page-max));
+  z-index:60;
+  display:grid;
+  grid-template-columns:64px 1fr 64px;
+  gap:10px;
+  align-items:center;
+  padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+  background:color-mix(in srgb,var(--bg) 88%, transparent);
+  backdrop-filter:blur(18px);
+  border-top:1px solid color-mix(in srgb,var(--border) 74%, transparent);
+}
+.bar-small {
+  height:48px;
+  border:0;
+  background:transparent;
+  color:var(--text-strong);
+  display:grid;
+  place-items:center;
+  gap:2px;
+  font-size:11px;
+  font-weight:850;
+}
+.primary-btn {
+  height:48px;
+  border:0;
+  border-radius:var(--radius-full);
+  background:linear-gradient(135deg, var(--primary), var(--ai-green));
+  color:#fff;
+  font-size:14px;
+  font-weight:900;
+  box-shadow:0 12px 30px rgba(124,58,237,.32);
+  display:flex; align-items:center; justify-content:center; gap:8px;
+}
+
+/* ─ TOC drawer ─ */
+.toc-drawer {
+  position:fixed;
+  inset:auto 10px calc(84px + env(safe-area-inset-bottom)) 10px;
+  max-width:430px;
+  margin:0 auto;
+  z-index:68;
+  display:none;
+  border-radius:24px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  box-shadow:0 22px 80px rgba(0,0,0,.22);
+  padding:16px;
+}
+.toc-drawer.open { display:block; }
+.toc-drawer h2 { margin:0 0 10px; font-size:16px; color:var(--text-strong); }
+.toc-drawer a { display:flex; justify-content:space-between; align-items:center; color:var(--text); padding:11px 0; border-top:1px solid color-mix(in srgb,var(--border) 54%, transparent); font-size:14px; font-weight:800; }
+.toc-drawer a:first-of-type { border-top:0; }
+
+/* ─ Toast ─ */
+.toast {
+  position:fixed;
+  left:50%; bottom:calc(92px + env(safe-area-inset-bottom));
+  transform:translateX(-50%) translateY(14px);
+  z-index:80;
+  opacity:0;
+  pointer-events:none;
+  background:var(--text-strong);
+  color:var(--bg);
+  border-radius:var(--radius-full);
+  padding:10px 14px;
+  font-size:13px;
+  font-weight:850;
+  transition:.18s ease;
+}
+.toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+
+@media (min-width: 720px) {
+  :root { --page-max:760px; }
+  .cover { min-height:auto; }
+  .hero-panel h1 { max-width:620px; }
+  .benefit-grid { grid-template-columns:repeat(3, 1fr); }
+  .pricing-grid { grid-template-columns:1fr 1fr; }
+  .tool-grid { grid-template-columns:repeat(3, 1fr); }
+  .tool-item.wide { grid-column:auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior:auto !important; transition:none !important; animation:none !important; }
+}
 </style>
 </head>
-<body class="scroll-smooth">
-
-<!-- ════════════════════════════════════════════════════════════════
-     NAV
-════════════════════════════════════════════════════════════════ -->
-<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/70 border-b border-orange-100">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="#top" class="flex items-center gap-2 font-bold text-lg">
-      <span class="w-8 h-8 rounded-xl gradient-peach flex items-center justify-center text-white">🎨</span>
-      <span>designSkill</span>
-    </a>
-    <ul class="hidden md:flex items-center gap-8 text-sm text-slate-700">
-      <li><a href="#skills" class="hover:text-[color:var(--coral)]">스킬 15</a></li>
-      <li><a href="#presets" class="hover:text-[color:var(--coral)]">프리셋 16</a></li>
-      <li><a href="#examples" class="hover:text-[color:var(--coral)]">예제 10</a></li>
-      <li><a href="#workflow" class="hover:text-[color:var(--coral)]">연수 워크플로</a></li>
-    </ul>
-    <a href="https://github.com/sumilee-phd/designSkill" target="_blank" rel="noopener"
-       class="px-4 py-2 rounded-full gradient-peach text-white text-sm font-semibold soft-shadow hover:-translate-y-0.5 transition-all duration-300">
-      GitHub에서 보기 →
-    </a>
-  </div>
-</nav>
-
-<!-- ════════════════════════════════════════════════════════════════
-     HERO
-════════════════════════════════════════════════════════════════ -->
-<section id="top" class="relative overflow-hidden pt-32 pb-24 gradient-soft">
-  <div class="blob" style="top:-100px; left:-50px; width:400px; height:400px; background:#FFB4A2;"></div>
-  <div class="blob" style="top:100px; right:-80px; width:500px; height:500px; background:#C7CEEA;"></div>
-  <div class="blob" style="bottom:-100px; left:40%; width:400px; height:400px; background:#B5EAD7;"></div>
-
-  <div class="relative max-w-6xl mx-auto px-6">
-    <div class="reveal inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/70 backdrop-blur border border-orange-100 text-sm text-[color:var(--ink-2)]">
-      <span class="w-2 h-2 rounded-full bg-[color:var(--coral)] animate-pulse"></span>
-      씨마스에듀 연수 4회차 공식 스킬 팩 · 2026.05.21
+<body>
+<div class="app-shell" id="top">
+  <!-- ─ HEADER ─ -->
+  <header class="reader-header" aria-label="상단 내비게이션">
+    <div class="header-left">
+      <button class="icon-btn" id="menuBtn" aria-label="목차 열기">☰</button>
     </div>
-
-    <h1 class="reveal mt-8 text-5xl md:text-7xl font-bold leading-[1.05]">
-      내 교실을 바꾸는<br/>
-      <span class="text-gradient">AI 디자인 스킬</span> 올인원
-    </h1>
-
-    <p class="reveal mt-6 text-xl md:text-2xl text-[color:var(--ink-2)] max-w-3xl leading-relaxed">
-      텍스트 파일 하나로 AI가 만드는 UI 퀄리티를 확 끌어올립니다.
-      한국 교사의 수업 현장에 맞춰, 전 세계 최고의 디자인 스킬을
-      <strong class="text-[color:var(--coral)]">하나의 패키지</strong>로 정리했어요.
-    </p>
-
-    <div class="reveal mt-10 flex flex-wrap gap-4">
-      <a href="https://github.com/sumilee-phd/designSkill" target="_blank" rel="noopener"
-         class="px-8 py-4 rounded-full gradient-peach text-white font-semibold text-lg soft-shadow-lg hover:-translate-y-0.5 transition-all duration-300">
-        <iconify-icon icon="solar:download-bold-duotone" inline></iconify-icon>
-        GitHub에서 받기
-      </a>
-      <a href="#skills"
-         class="px-8 py-4 rounded-full bg-white/70 backdrop-blur border border-orange-200 text-[color:var(--ink)] font-semibold text-lg hover:bg-white transition-all duration-300">
-        스킬 구경하기
-      </a>
+    <div class="header-title">
+      <strong>구글 AI 비서 TOP 6</strong>
+      <span>씨마스에듀 · 2026.05 · 이수미·김남희</span>
     </div>
-
-    <!-- 통계 카드 -->
-    <div class="reveal mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div class="bg-white/80 backdrop-blur rounded-2xl p-6 soft-shadow">
-        <div class="text-5xl font-black text-[color:var(--coral)]">15</div>
-        <div class="mt-2 text-sm text-[color:var(--ink-2)] font-medium">스킬 (SKILL.md)</div>
-      </div>
-      <div class="bg-white/80 backdrop-blur rounded-2xl p-6 soft-shadow">
-        <div class="text-5xl font-black text-[color:var(--coral)]">16</div>
-        <div class="mt-2 text-sm text-[color:var(--ink-2)] font-medium">프리셋 DESIGN.md</div>
-      </div>
-      <div class="bg-white/80 backdrop-blur rounded-2xl p-6 soft-shadow">
-        <div class="text-5xl font-black text-[color:var(--coral)]">10</div>
-        <div class="mt-2 text-sm text-[color:var(--ink-2)] font-medium">교사 시나리오 예제</div>
-      </div>
-      <div class="bg-white/80 backdrop-blur rounded-2xl p-6 soft-shadow">
-        <div class="text-5xl font-black text-[color:var(--coral)]">100<span class="text-3xl">%</span></div>
-        <div class="mt-2 text-sm text-[color:var(--ink-2)] font-medium">한국어 · Pretendard</div>
-      </div>
+    <div class="header-actions">
+      <button class="icon-btn" id="themeBtn" aria-label="테마 전환">☀</button>
     </div>
-  </div>
-</section>
+    <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+  </header>
 
-<!-- ════════════════════════════════════════════════════════════════
-     SKILLS
-════════════════════════════════════════════════════════════════ -->
-<section id="skills" class="py-24">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="reveal max-w-2xl">
-      <div class="text-sm font-semibold text-[color:var(--coral)] uppercase tracking-wider">01 · Skills</div>
-      <h2 class="mt-3 text-4xl md:text-5xl font-bold">15개 스킬, 상황별로 골라 쓰세요</h2>
-      <p class="mt-4 text-lg text-[color:var(--ink-2)]">
-        Google Stitch 공식 · AI Studio Build · Taste-Skill · Supanova 한국어 · OpenAI Figma · Vercel 배포까지.
-        연수 4회차 흐름에 맞춰 구성했습니다.
-      </p>
-    </div>
-
-    <!-- 스킬 그리드 -->
-    <div class="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-      <!-- 각 카드 -->
-      <article class="reveal bg-white rounded-3xl p-7 soft-shadow hover:-translate-y-1 hover:soft-shadow-lg transition-all duration-300 border border-orange-50">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-12 h-12 rounded-2xl bg-orange-100 flex items-center justify-center">
-            <iconify-icon icon="solar:document-text-bold-duotone" width="24" class="text-[color:var(--coral)]"></iconify-icon>
-          </div>
-          <span class="text-xs font-mono text-[color:var(--ink-2)]">01</span>
-        </div>
-        <h3 class="text-xl font-bold">design-md</h3>
-        <p class="mt-2 text-[color:var(--ink-2)] text-sm leading-relaxed">DESIGN.md 9섹션을 자동 생성. Stitch 공식 포맷.</p>
-        <div class="mt-4 text-xs text-[color:var(--ink-2)]">Google Stitch-Skills</div>
-      </article>
-
-      <article class="reveal bg-white rounded-3xl p-7 soft-shadow hover:-translate-y-1 hover:soft-shadow-lg transition-all duration-300 border border-orange-50">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-12 h-12 rounded-2xl bg-pink-100 flex items-center justify-center">
-            <iconify-icon icon="solar:magic-stick-3-bold-duotone" width="24" class="text-pink-500"></iconify-icon>
-          </div>
-          <span class="text-xs font-mono text-[color:var(--ink-2)]">02</span>
-        </div>
-        <h3 class="text-xl font-bold">enhance-prompt</h3>
-        <p class="mt-2 text-[color:var(--ink-2)] text-sm leading-relaxed">모호한 아이디어를 Stitch 최적화 프롬프트로 변환.</p>
-        <div class="mt-4 text-xs text-[color:var(--ink-2)]">Google Stitch-Skills</div>
-      </article>
-
-      <article class="reveal bg-white rounded-3xl p-7 soft-shadow hover:-translate-y-1 hover:soft-shadow-lg transition-all duration-300 border border-orange-50">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-12 h-12 rounded-2xl bg-purple-100 flex items-center justify-center">
-            <iconify-icon icon="solar:text-bold-duotone" width="24" class="text-purple-500"></iconify-icon>
-          </div>
-          <span class="text-xs font-mono text-[color:var(--ink-2)]">03</span>
-        </div>
-        <h3 class="text-xl font-bold">korean-style</h3>
-        <p class="mt-2 text-[color:var(--ink-2)] text-sm leading-relaxed">Pretendard · 한국어 줄바꿈 · CTA 패턴 자동 주입.</p>
-        <div class="mt-4 text-xs text-[color:var(--ink-2)]">Supanova 기반</div>
-      </article>
-
-      <article class="reveal bg-white rounded-3xl p-7 soft-shadow hover:-translate-y-1 hover:soft-shadow-lg transition-all duration-300 border border-orange-50">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-12 h-12 rounded-2xl bg-yellow-100 flex items-center justify-center">
-            <iconify-icon icon="solar:tuning-square-bold-duotone" width="24" class="text-yellow-600"></iconify-icon>
-          </div>
-          <span class="text-xs font-mono text-[color:var(--ink-2)]">04</span>
-        </div>
-        <h3 class="text-xl font-bold">taste-dials</h3>
-        <p class="mt-2 text-[color:var(--ink-2)] text-sm leading-relaxed">VARIANCE / MOTION / DENSITY 3개 다이얼로 감각 조절.</p>
-        <div class="mt-4 text-xs text-[color:var(--ink-2)]">Taste-Skill</div>
-      </article>
-
-      <article class="reveal bg-white rounded-3xl p-7 soft-shadow hover:-translate-y-1 hover:soft-shadow-lg transition-all duration-300 border border-orange-50">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-12 h-12 rounded-2xl bg-indigo-100 flex items-center justify-center">
-            <iconify-icon icon="solar:cup-star-bold-duotone" width="24" class="text-indigo-500"></iconify-icon>
-          </div>
-          <span class="text-xs font-mono text-[color:var(--ink-2)]">05</span>
-        </div>
-        <h3 class="text-xl font-bold">soft-style</h3>
-        <p class="mt-2 text-[color:var(--ink-2)] text-sm leading-relaxed">Superhuman·Linear급 프리미엄 소프트 미학.</p>
-        <div class="mt-4 text-xs text-[color:var(--ink-2)]">Taste-Skill</div>
-      </article>
-
-      <article class="reveal bg-white rounded-3xl p-7 soft-shadow hover:-translate-y-1 hover:soft-shadow-lg transition-all duration-300 border border-orange-50">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center">
-            <iconify-icon icon="solar:notebook-minimalistic-bold-duotone" width="24" class="text-slate-600"></iconify-icon>
-          </div>
-          <span class="text-xs font-mono text-[color:var(--ink-2)]">06</span>
-        </div>
-        <h3 class="text-xl font-bold">minimalist</h3>
-        <p class="mt-2 text-[color:var(--ink-2)] text-sm leading-relaxed">Notion · Vercel 에디토리얼 미니멀리즘.</p>
-        <div class="mt-4 text-xs text-[color:var(--ink-2)]">Taste-Skill</div>
-      </article>
-
-      <article class="reveal bg-white rounded-3xl p-7 soft-shadow hover:-translate-y-1 hover:soft-shadow-lg transition-all duration-300 border border-orange-50">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-12 h-12 rounded-2xl bg-black flex items-center justify-center">
-            <iconify-icon icon="solar:bolt-circle-bold-duotone" width="24" class="text-yellow-300"></iconify-icon>
-          </div>
-          <span class="text-xs font-mono text-[color:var(--ink-2)]">07</span>
-        </div>
-        <h3 class="text-xl font-bold">brutalist</h3>
-        <p class="mt-2 text-[color:var(--ink-2)] text-sm leading-relaxed">실험적 Swiss 타이포 · 동아리·축제 포스터용.</p>
-        <div class="mt-4 text-xs text-[color:var(--ink-2)]">Taste-Skill</div>
-      </article>
-
-      <article class="reveal bg-white rounded-3xl p-7 soft-shadow hover:-translate-y-1 hover:soft-shadow-lg transition-all duration-300 border border-orange-50">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-12 h-12 rounded-2xl bg-emerald-100 flex items-center justify-center">
-            <iconify-icon icon="solar:refresh-circle-bold-duotone" width="24" class="text-emerald-600"></iconify-icon>
-          </div>
-          <span class="text-xs font-mono text-[color:var(--ink-2)]">08</span>
-        </div>
-        <h3 class="text-xl font-bold">redesign</h3>
-        <p class="mt-2 text-[color:var(--ink-2)] text-sm leading-relaxed">기존 UI 진단 → 우선순위 → 단계적 개선.</p>
-        <div class="mt-4 text-xs text-[color:var(--ink-2)]">Taste-Skill</div>
-      </article>
-
-      <article class="reveal bg-white rounded-3xl p-7 soft-shadow hover:-translate-y-1 hover:soft-shadow-lg transition-all duration-300 border border-orange-50">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-12 h-12 rounded-2xl bg-sky-100 flex items-center justify-center">
-            <iconify-icon icon="solar:code-square-bold-duotone" width="24" class="text-sky-600"></iconify-icon>
-          </div>
-          <span class="text-xs font-mono text-[color:var(--ink-2)]">09</span>
-        </div>
-        <h3 class="text-xl font-bold">react-convert</h3>
-        <p class="mt-2 text-[color:var(--ink-2)] text-sm leading-relaxed">HTML → React + Tailwind 컴포넌트 시스템 변환.</p>
-        <div class="mt-4 text-xs text-[color:var(--ink-2)]">Google Stitch-Skills</div>
-      </article>
-
-      <article class="reveal bg-white rounded-3xl p-7 soft-shadow hover:-translate-y-1 hover:soft-shadow-lg transition-all duration-300 border border-orange-50">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-12 h-12 rounded-2xl bg-violet-100 flex items-center justify-center">
-            <iconify-icon icon="solar:widget-5-bold-duotone" width="24" class="text-violet-600"></iconify-icon>
-          </div>
-          <span class="text-xs font-mono text-[color:var(--ink-2)]">10</span>
-        </div>
-        <h3 class="text-xl font-bold">shadcn-ui</h3>
-        <p class="mt-2 text-[color:var(--ink-2)] text-sm leading-relaxed">shadcn/ui 접근성 컴포넌트 + 한국어 가이드.</p>
-        <div class="mt-4 text-xs text-[color:var(--ink-2)]">Google Stitch-Skills</div>
-      </article>
-
-      <article class="reveal bg-white rounded-3xl p-7 soft-shadow hover:-translate-y-1 hover:soft-shadow-lg transition-all duration-300 border border-orange-50">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-12 h-12 rounded-2xl bg-teal-100 flex items-center justify-center">
-            <iconify-icon icon="solar:layers-bold-duotone" width="24" class="text-teal-600"></iconify-icon>
-          </div>
-          <span class="text-xs font-mono text-[color:var(--ink-2)]">11</span>
-        </div>
-        <h3 class="text-xl font-bold">stitch-multipage</h3>
-        <p class="mt-2 text-[color:var(--ink-2)] text-sm leading-relaxed">단일 프롬프트로 다중 페이지 웹사이트 자동 생성.</p>
-        <div class="mt-4 text-xs text-[color:var(--ink-2)]">Google Stitch-Skills</div>
-      </article>
-
-      <article class="reveal bg-white rounded-3xl p-7 soft-shadow hover:-translate-y-1 hover:soft-shadow-lg transition-all duration-300 border border-orange-50">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-12 h-12 rounded-2xl bg-rose-100 flex items-center justify-center">
-            <iconify-icon icon="solar:videocamera-bold-duotone" width="24" class="text-rose-500"></iconify-icon>
-          </div>
-          <span class="text-xs font-mono text-[color:var(--ink-2)]">12</span>
-        </div>
-        <h3 class="text-xl font-bold">remotion-video</h3>
-        <p class="mt-2 text-[color:var(--ink-2)] text-sm leading-relaxed">완성된 앱을 60초 홍보 영상으로 자동 제작.</p>
-        <div class="mt-4 text-xs text-[color:var(--ink-2)]">Google Stitch-Skills</div>
-      </article>
-
-      <article class="reveal bg-white rounded-3xl p-7 soft-shadow hover:-translate-y-1 hover:soft-shadow-lg transition-all duration-300 border border-orange-50">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-12 h-12 rounded-2xl bg-fuchsia-100 flex items-center justify-center">
-            <iconify-icon icon="solar:figma-bold-duotone" width="24" class="text-fuchsia-500"></iconify-icon>
-          </div>
-          <span class="text-xs font-mono text-[color:var(--ink-2)]">13</span>
-        </div>
-        <h3 class="text-xl font-bold">figma-import</h3>
-        <p class="mt-2 text-[color:var(--ink-2)] text-sm leading-relaxed">Figma URL → 프로덕션 코드 (MCP 필요 · 선택).</p>
-        <div class="mt-4 text-xs text-[color:var(--ink-2)]">OpenAI Skills</div>
-      </article>
-
-      <article class="reveal bg-gradient-to-br from-orange-50 to-pink-50 rounded-3xl p-7 soft-shadow-lg hover:-translate-y-1 transition-all duration-300 border-2 border-[color:var(--coral)]">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-12 h-12 rounded-2xl gradient-peach flex items-center justify-center">
-            <iconify-icon icon="solar:rocket-2-bold-duotone" width="24" class="text-white"></iconify-icon>
-          </div>
-          <span class="text-xs font-mono text-[color:var(--coral)] font-bold">14 · ★ 오리지널</span>
-        </div>
-        <h3 class="text-xl font-bold">vercel-deploy</h3>
-        <p class="mt-2 text-[color:var(--ink-2)] text-sm leading-relaxed">GitHub → Vercel 배포. 교사를 위한 실패 대응 가이드까지.</p>
-        <div class="mt-4 text-xs text-[color:var(--coral)] font-semibold">4회차 실습 핵심 · 연수 오리지널</div>
-      </article>
-
-      <article class="reveal bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 rounded-3xl p-7 soft-shadow-lg hover:-translate-y-1 transition-all duration-300 border-2 border-indigo-300 md:col-span-2 lg:col-span-3">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-500 to-pink-500 flex items-center justify-center">
-            <iconify-icon icon="solar:cpu-bolt-bold-duotone" width="24" class="text-white"></iconify-icon>
-          </div>
-          <span class="text-xs font-mono text-indigo-600 font-bold">15 · ★★ 4회차 핵심</span>
-          <span class="px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-700 text-xs font-semibold">Google AI Studio Build</span>
-        </div>
-        <h3 class="text-2xl font-bold">ai-studio-build — UI에 실제 기능 이식</h3>
-        <p class="mt-3 text-[color:var(--ink-2)] leading-relaxed">
-          Stitch가 만든 UI는 <strong>그림</strong>일 뿐입니다. 버튼 클릭·폼 제출·Gemini API 연동 같은 <strong>실제 동작</strong>은 AI Studio Build에서 구현합니다.
-          Stitch의 디자인을 <strong>그대로 유지</strong>하면서 React+TypeScript+Tailwind 앱으로 완성 → GitHub 자동 연동 → Vercel 배포까지 한 흐름으로.
-        </p>
-        <div class="mt-5 grid md:grid-cols-3 gap-3 text-sm">
-          <div class="bg-white/70 rounded-xl px-4 py-3">
-            <div class="font-semibold text-indigo-700">① UI 이식</div>
-            <div class="text-xs text-[color:var(--ink-2)] mt-1">Stitch HTML + DESIGN.md 첨부</div>
-          </div>
-          <div class="bg-white/70 rounded-xl px-4 py-3">
-            <div class="font-semibold text-purple-700">② 기능 구현</div>
-            <div class="text-xs text-[color:var(--ink-2)] mt-1">폼 · Gemini API · LocalStorage</div>
-          </div>
-          <div class="bg-white/70 rounded-xl px-4 py-3">
-            <div class="font-semibold text-pink-700">③ GitHub 자동 연동</div>
-            <div class="text-xs text-[color:var(--ink-2)] mt-1">코드 자동 커밋 · Vercel 연결</div>
-          </div>
-        </div>
-        <div class="mt-4 text-xs text-indigo-600 font-semibold">연수 오리지널 · Stitch와 Vercel을 잇는 핵심 허브</div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════════════════════════
-     PRESETS
-════════════════════════════════════════════════════════════════ -->
-<section id="presets" class="py-24 bg-white/50 border-y border-orange-100">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="reveal max-w-2xl">
-      <div class="text-sm font-semibold text-[color:var(--coral)] uppercase tracking-wider">02 · Presets</div>
-      <h2 class="mt-3 text-4xl md:text-5xl font-bold">16개 프리셋 DESIGN.md</h2>
-      <p class="mt-4 text-lg text-[color:var(--ink-2)]">
-        복사해서 바로 쓰는 디자인 시스템 문서. 한국 기업 · 글로벌 · 교육용 오리지널.
-      </p>
-    </div>
-
-    <!-- Korean -->
-    <div class="reveal mt-12">
-      <div class="flex items-center gap-3 mb-5">
-        <span class="text-2xl">🇰🇷</span>
-        <h3 class="text-2xl font-bold">한국 기업 (5)</h3>
+  <main>
+    <!-- ════════ COVER ════════ -->
+    <section class="cover" id="cover">
+      <div class="chips" aria-label="키워드">
+        <span class="chip">구글 제미나이</span>
+        <span class="chip ai-green">The Next Level</span>
+        <span class="chip">2026 · 5월</span>
+        <span class="chip">씨마스에듀 인증</span>
       </div>
-      <div class="flex flex-wrap gap-3">
-        <span class="px-5 py-2.5 rounded-full bg-blue-100 text-blue-800 font-semibold">Toss</span>
-        <span class="px-5 py-2.5 rounded-full bg-yellow-100 text-yellow-900 font-semibold">Kakao</span>
-        <span class="px-5 py-2.5 rounded-full bg-green-100 text-green-800 font-semibold">Naver</span>
-        <span class="px-5 py-2.5 rounded-full bg-emerald-100 text-emerald-800 font-semibold">LINE</span>
-        <span class="px-5 py-2.5 rounded-full bg-pink-100 text-pink-800 font-semibold">Pinkoi</span>
-      </div>
-    </div>
-
-    <!-- Global -->
-    <div class="reveal mt-10">
-      <div class="flex items-center gap-3 mb-5">
-        <span class="text-2xl">🌐</span>
-        <h3 class="text-2xl font-bold">글로벌 (6)</h3>
-      </div>
-      <div class="flex flex-wrap gap-3">
-        <span class="px-5 py-2.5 rounded-full bg-neutral-100 text-neutral-900 font-semibold">Notion</span>
-        <span class="px-5 py-2.5 rounded-full bg-indigo-100 text-indigo-800 font-semibold">Linear</span>
-        <span class="px-5 py-2.5 rounded-full bg-slate-100 text-slate-800 font-semibold">Apple</span>
-        <span class="px-5 py-2.5 rounded-full bg-purple-100 text-purple-800 font-semibold">Stripe</span>
-        <span class="px-5 py-2.5 rounded-full bg-black text-white font-semibold">Vercel</span>
-        <span class="px-5 py-2.5 rounded-full bg-green-900 text-green-100 font-semibold">Spotify</span>
-      </div>
-    </div>
-
-    <!-- Education -->
-    <div class="reveal mt-10">
-      <div class="flex items-center gap-3 mb-5">
-        <span class="text-2xl">🏫</span>
-        <h3 class="text-2xl font-bold">교육용 오리지널 (5) <span class="text-sm font-normal text-[color:var(--coral)]">★ 연수 전용</span></h3>
-      </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div class="bg-gradient-to-br from-orange-100 to-pink-100 rounded-2xl p-5">
-          <h4 class="font-bold">classroom-pastel 🌸</h4>
-          <p class="text-sm text-[color:var(--ink-2)] mt-1">초등 3–4학년 · 따뜻한 파스텔 · 학부모 안심</p>
-        </div>
-        <div class="bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl p-5">
-          <h4 class="font-bold">lesson-clean 📘</h4>
-          <p class="text-sm text-[color:var(--ink-2)] mt-1">중등 수업자료 · 딥 블루 · 본문 폭 720px</p>
-        </div>
-        <div class="bg-gradient-to-br from-purple-100 to-violet-200 rounded-2xl p-5">
-          <h4 class="font-bold">quiz-playful 🎮</h4>
-          <p class="text-sm text-[color:var(--ink-2)] mt-1">퀴즈·게임 · 바이올렛 · 즉각 피드백</p>
-        </div>
-        <div class="bg-gradient-to-br from-slate-100 to-blue-100 rounded-2xl p-5">
-          <h4 class="font-bold">parent-formal 🏛️</h4>
-          <p class="text-sm text-[color:var(--ink-2)] mt-1">학부모 공식 · 딥 네이비 · 공문 감각</p>
-        </div>
-        <div class="bg-gradient-to-br from-pink-200 via-yellow-100 to-cyan-200 rounded-2xl p-5">
-          <h4 class="font-bold">student-vibrant ⚡</h4>
-          <p class="text-sm text-[color:var(--ink-2)] mt-1">고등학생 · 비비드 · Z세대 매거진</p>
+      <div class="hero-panel">
+        <div class="hero-kicker"><span class="dot"></span>통합 워크숍 연수 · 총 12시간</div>
+        <h1>내 교실을 바꾸는<br><span class="ai-accent">최강 구글 AI</span> 비서<span class="top-badge">TOP 6</span></h1>
+        <p class="hero-subtitle">구글 <strong>Opal · Gems · Mixboard · Flow · Stitch · AI Studio</strong>를 하나의 서비스로 완성하는 통합 워크숍 연수</p>
+        <div class="hero-quote">"AI를 가르치는 교사에서, AI로 수업을 혁신하는 교사로"</div>
+        <div class="hero-meta">
+          <div class="meta-item"><span>사전 VOD</span><strong>2시간 · 5.7 배포</strong></div>
+          <div class="meta-item"><span>실시간 Zoom</span><strong>10시간 · 4회</strong></div>
+          <div class="meta-item"><span>강사</span><strong>이수미 · 김남희</strong></div>
+          <div class="meta-item"><span>수료증</span><strong>씨마스 인증</strong></div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ════════════════════════════════════════════════════════════════
-     EXAMPLES
-════════════════════════════════════════════════════════════════ -->
-<section id="examples" class="py-24">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="reveal max-w-2xl">
-      <div class="text-sm font-semibold text-[color:var(--coral)] uppercase tracking-wider">03 · Examples</div>
-      <h2 class="mt-3 text-4xl md:text-5xl font-bold">10가지 교사 시나리오</h2>
-      <p class="mt-4 text-lg text-[color:var(--ink-2)]">
-        프롬프트 템플릿 그대로 복사해 Stitch·Claude·Gemini에 붙여넣기만 하세요.
-      </p>
-    </div>
-
-    <ul class="reveal mt-12 grid md:grid-cols-2 gap-4">
-      <li class="bg-white rounded-2xl p-6 soft-shadow border border-orange-50 flex items-start gap-4">
-        <span class="text-3xl flex-shrink-0">🏫</span>
+    <!-- ════════ 연수 혜택 ════════ -->
+    <section class="section" id="benefits">
+      <div class="section-head">
         <div>
-          <h4 class="font-bold">01. 학급 홍보 페이지</h4>
-          <p class="text-sm text-[color:var(--ink-2)] mt-1">4학년 3반 · 학부모 · 동료 교사 대상 · 30–40분</p>
+          <span class="mini-label">BENEFITS · 연수 혜택</span>
+          <h2>왜 이 연수여야 하나요</h2>
+          <p>수업 현장에서 바로 쓰는 AI 도구 6종을 한 번에. 따로 배우고 따로 조립하던 시간 낭비를 ZERO로.</p>
         </div>
-      </li>
-      <li class="bg-white rounded-2xl p-6 soft-shadow border border-orange-50 flex items-start gap-4">
-        <span class="text-3xl flex-shrink-0">🎯</span>
-        <div>
-          <h4 class="font-bold">02. 수업용 퀴즈 앱</h4>
-          <p class="text-sm text-[color:var(--ink-2)] mt-1">사회 단원 복습 · 즉각 피드백 · 40–60분</p>
-        </div>
-      </li>
-      <li class="bg-white rounded-2xl p-6 soft-shadow border border-orange-50 flex items-start gap-4">
-        <span class="text-3xl flex-shrink-0">👨‍👩‍👧</span>
-        <div>
-          <h4 class="font-bold">03. 학부모 안내 앱</h4>
-          <p class="text-sm text-[color:var(--ink-2)] mt-1">현장학습·건강 설문·공지 통합 · 50–70분</p>
-        </div>
-      </li>
-      <li class="bg-white rounded-2xl p-6 soft-shadow border border-orange-50 flex items-start gap-4">
-        <span class="text-3xl flex-shrink-0">📁</span>
-        <div>
-          <h4 class="font-bold">04. 학생 포트폴리오</h4>
-          <p class="text-sm text-[color:var(--ink-2)] mt-1">중3 연간 프로젝트 · 진학 공유용 · 60–90분</p>
-        </div>
-      </li>
-      <li class="bg-white rounded-2xl p-6 soft-shadow border border-orange-50 flex items-start gap-4">
-        <span class="text-3xl flex-shrink-0">📊</span>
-        <div>
-          <h4 class="font-bold">05. 출결 확인 대시보드</h4>
-          <p class="text-sm text-[color:var(--ink-2)] mt-1">매일 아침 1분 체크 · 주간·월간 통계 · 40–60분</p>
-        </div>
-      </li>
-      <li class="bg-white rounded-2xl p-6 soft-shadow border border-orange-50 flex items-start gap-4">
-        <span class="text-3xl flex-shrink-0">🚌</span>
-        <div>
-          <h4 class="font-bold">06. 현장학습 안내</h4>
-          <p class="text-sm text-[color:var(--ink-2)] mt-1">일정·준비물·동의서 통합 · 30–40분</p>
-        </div>
-      </li>
-      <li class="bg-white rounded-2xl p-6 soft-shadow border border-orange-50 flex items-start gap-4">
-        <span class="text-3xl flex-shrink-0">📚</span>
-        <div>
-          <h4 class="font-bold">07. 독서록 앱</h4>
-          <p class="text-sm text-[color:var(--ink-2)] mt-1">책 기록·통계·회고 · 50–70분</p>
-        </div>
-      </li>
-      <li class="bg-white rounded-2xl p-6 soft-shadow border border-orange-50 flex items-start gap-4">
-        <span class="text-3xl flex-shrink-0">📅</span>
-        <div>
-          <h4 class="font-bold">08. 시간표 관리 앱</h4>
-          <p class="text-sm text-[color:var(--ink-2)] mt-1">교사 전용 · 임시 변경 · 다크 모드 · 40–50분</p>
-        </div>
-      </li>
-      <li class="bg-white rounded-2xl p-6 soft-shadow border border-orange-50 flex items-start gap-4">
-        <span class="text-3xl flex-shrink-0">🎭</span>
-        <div>
-          <h4 class="font-bold">09. 학교 행사 초대장</h4>
-          <p class="text-sm text-[color:var(--ink-2)] mt-1">학예회·체육대회·졸업식 · 30–50분</p>
-        </div>
-      </li>
-      <li class="bg-white rounded-2xl p-6 soft-shadow border border-orange-50 flex items-start gap-4">
-        <span class="text-3xl flex-shrink-0">🗂️</span>
-        <div>
-          <h4 class="font-bold">10. 교과 자료 허브</h4>
-          <p class="text-sm text-[color:var(--ink-2)] mt-1">6과목 멀티페이지 · 검색·태그 · 60–90분</p>
-        </div>
-      </li>
-    </ul>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════════════════════════
-     WORKFLOW
-════════════════════════════════════════════════════════════════ -->
-<section id="workflow" class="py-24 gradient-soft">
-  <div class="max-w-5xl mx-auto px-6">
-    <div class="reveal max-w-2xl">
-      <div class="text-sm font-semibold text-[color:var(--coral)] uppercase tracking-wider">04 · Workflow</div>
-      <h2 class="mt-3 text-4xl md:text-5xl font-bold">연수 4회차 워크플로</h2>
-      <p class="mt-4 text-lg text-[color:var(--ink-2)]">
-        2026.05.21 (목) 19:00–21:30 · 아이디어에서 실제 배포까지 한 흐름으로 진행합니다.
-      </p>
-    </div>
-
-    <ol class="reveal mt-14 relative border-l-4 border-[color:var(--coral)] ml-4 space-y-10">
-      <li class="pl-8 relative">
-        <span class="absolute -left-[22px] top-0 w-10 h-10 rounded-full gradient-peach flex items-center justify-center text-white font-bold soft-shadow">1</span>
-        <h4 class="text-xl font-bold">AI Studio에서 아이디어 발상 · 기능 명세</h4>
-        <p class="mt-2 text-[color:var(--ink-2)]">구현할 앱의 목적·사용자·핵심 기능을 Gemini와 정리합니다.</p>
-      </li>
-      <li class="pl-8 relative">
-        <span class="absolute -left-[22px] top-0 w-10 h-10 rounded-full gradient-peach flex items-center justify-center text-white font-bold soft-shadow">2</span>
-        <h4 class="text-xl font-bold">enhance-prompt · korean-style · 프리셋 선택</h4>
-        <p class="mt-2 text-[color:var(--ink-2)]">취지에 맞는 프리셋을 골라 프롬프트를 강화합니다.</p>
-      </li>
-      <li class="pl-8 relative">
-        <span class="absolute -left-[22px] top-0 w-10 h-10 rounded-full gradient-peach flex items-center justify-center text-white font-bold soft-shadow">3</span>
-        <h4 class="text-xl font-bold">Stitch에서 화면 생성 · DESIGN.md 추출</h4>
-        <p class="mt-2 text-[color:var(--ink-2)]">첫 번째 화면을 만들고, design-md로 일관성 문서를 확보합니다.</p>
-      </li>
-      <li class="pl-8 relative">
-        <span class="absolute -left-[22px] top-0 w-10 h-10 rounded-full gradient-peach flex items-center justify-center text-white font-bold soft-shadow">4</span>
-        <h4 class="text-xl font-bold">stitch-multipage로 여러 화면 완성</h4>
-        <p class="mt-2 text-[color:var(--ink-2)]">다중 페이지 사이트를 확장해 완결된 UI 흐름을 만듭니다.</p>
-      </li>
-      <li class="pl-8 relative">
-        <span class="absolute -left-[22px] top-0 w-10 h-10 rounded-full bg-gradient-to-br from-[#4F46E5] to-[#EC4899] flex items-center justify-center text-white font-bold soft-shadow ring-4 ring-white">5</span>
-        <h4 class="text-xl font-bold">AI Studio Build로 기능 구현 <span class="text-sm font-normal text-[color:var(--coral)]">★ 핵심</span></h4>
-        <p class="mt-2 text-[color:var(--ink-2)]">Stitch가 만든 UI에 실제 동작(폼 제출·데이터 저장·Gemini API 연동)을 넣어 "진짜 앱"으로 완성합니다.</p>
-      </li>
-      <li class="pl-8 relative">
-        <span class="absolute -left-[22px] top-0 w-10 h-10 rounded-full gradient-peach flex items-center justify-center text-white font-bold soft-shadow">6</span>
-        <h4 class="text-xl font-bold">GitHub push → Vercel 배포</h4>
-        <p class="mt-2 text-[color:var(--ink-2)]">실제 URL을 받아 학부모·학생에게 공유합니다.</p>
-      </li>
-      <li class="pl-8 relative">
-        <span class="absolute -left-[22px] top-0 w-10 h-10 rounded-full gradient-peach flex items-center justify-center text-white font-bold soft-shadow">7</span>
-        <h4 class="text-xl font-bold">remotion-video로 소개 영상 제작 (심화)</h4>
-        <p class="mt-2 text-[color:var(--ink-2)]">완성된 앱을 60초 홍보 영상으로 만들어 공유 채널에 업로드합니다.</p>
-      </li>
-    </ol>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════════════════════════
-     GET STARTED CTA
-════════════════════════════════════════════════════════════════ -->
-<section class="py-24">
-  <div class="max-w-4xl mx-auto px-6 text-center">
-    <div class="reveal bg-gradient-to-br from-orange-100 via-pink-50 to-purple-100 rounded-[2.5rem] p-12 md:p-16 soft-shadow-lg border border-orange-200">
-      <h2 class="text-4xl md:text-5xl font-bold">지금 바로 시작하기</h2>
-      <p class="mt-5 text-lg text-[color:var(--ink-2)] max-w-2xl mx-auto">
-        GitHub 저장소를 복제하거나 필요한 파일만 프로젝트에 복사하세요. AI 코딩 에이전트에게 <code class="px-2 py-1 rounded bg-white/80 text-[color:var(--coral)] font-mono text-sm">@SKILL.md</code>를 참조하게 하면 바로 작동합니다.
-      </p>
-      <div class="mt-10 flex flex-wrap gap-4 justify-center">
-        <a href="https://github.com/sumilee-phd/designSkill" target="_blank" rel="noopener"
-           class="inline-flex items-center gap-2 px-8 py-4 rounded-full gradient-peach text-white font-semibold text-lg soft-shadow-lg hover:-translate-y-0.5 transition-all duration-300">
-          <iconify-icon icon="mdi:github" width="24"></iconify-icon>
-          GitHub에서 받기
-        </a>
-        <a href="https://github.com/sumilee-phd/designSkill/archive/refs/heads/main.zip" target="_blank" rel="noopener"
-           class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white border border-orange-200 text-[color:var(--ink)] font-semibold text-lg hover:-translate-y-0.5 transition-all duration-300">
-          <iconify-icon icon="solar:download-square-bold-duotone" width="24"></iconify-icon>
-          ZIP 다운로드
-        </a>
       </div>
-
-      <div class="mt-12 p-6 rounded-2xl bg-white/70 backdrop-blur text-left max-w-2xl mx-auto">
-        <div class="text-xs font-semibold text-[color:var(--ink-2)] uppercase tracking-wider mb-2">빠른 시작</div>
-        <pre class="text-sm overflow-x-auto text-[color:var(--ink)]"><code># 1. 클론
-git clone https://github.com/sumilee-phd/designSkill.git
-
-# 2. Claude Code / Cursor / Gemini에서
-@SKILL.md 를 참조해서 [학급 홍보 페이지]를 만들어 주세요.
-스타일은 @presets/education/classroom-pastel.md 기준으로.
-
-# 3. 완성된 결과를 Vercel에 배포
-자세한 배포 안내: skills/14-vercel-deploy/SKILL.md</code></pre>
+      <div class="benefit-grid">
+        <article class="benefit-card peach">
+          <div class="benefit-icon">⚡</div>
+          <h3>시간 낭비 ZERO!</h3>
+          <p>완벽한 플립러닝 구조. 사전 VOD로 기초를 빠르게 훑고, 실시간 Zoom은 실습과 Q&A에 집중.</p>
+        </article>
+        <article class="benefit-card lavender">
+          <div class="benefit-icon">📦</div>
+          <h3>연수 FULL 패키지</h3>
+          <p>교안 · 복습 영상 · 실습 파일 · Q&A 단독 단톡방까지. 연수가 끝나도 6개월 동안 계속 물어볼 수 있어요.</p>
+        </article>
+        <article class="benefit-card mint">
+          <div class="benefit-icon">🏆</div>
+          <h3>씨마스 인증 수료증</h3>
+          <p>교육청·학교 보고용으로 활용 가능한 공식 수료증. 연수 시간 인정 가능.</p>
+        </article>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ════════════════════════════════════════════════════════════════
-     FOOTER
-════════════════════════════════════════════════════════════════ -->
-<footer class="py-16 border-t border-orange-100 bg-white/50">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="grid md:grid-cols-3 gap-10 text-sm text-[color:var(--ink-2)]">
-      <div>
-        <div class="flex items-center gap-2 font-bold text-[color:var(--ink)] text-lg mb-3">
-          <span class="w-8 h-8 rounded-xl gradient-peach flex items-center justify-center text-white">🎨</span>
-          <span>designSkill</span>
+    <!-- ════════ 가격 ════════ -->
+    <section class="section" id="pricing">
+      <div class="section-head">
+        <div>
+          <span class="mini-label">PRICING · 얼리버드</span>
+          <h2>지금 신청하면 <span style="color:var(--secondary-strong);">50% 할인</span></h2>
+          <p>정가 120,000원. 환불 기한은 5월 6일(수)까지입니다.</p>
         </div>
-        <p>한국 교사를 위한 AI 디자인 스킬 올인원 패키지.<br/>
-        씨마스에듀 연수 4회차 공식 자료.</p>
       </div>
-      <div>
-        <h5 class="font-semibold text-[color:var(--ink)] mb-3">출처</h5>
-        <ul class="space-y-1.5">
-          <li><a href="https://github.com/google-labs-code/stitch-skills" class="hover:text-[color:var(--coral)]" target="_blank" rel="noopener">Google Stitch-Skills</a></li>
-          <li><a href="https://github.com/VoltAgent/awesome-design-md" class="hover:text-[color:var(--coral)]" target="_blank" rel="noopener">Awesome-Design-Md</a></li>
-          <li><a href="https://github.com/Leonxlnx/taste-skill" class="hover:text-[color:var(--coral)]" target="_blank" rel="noopener">Taste-Skill</a></li>
-          <li><a href="https://github.com/uxjoseph/supanova-design-skill" class="hover:text-[color:var(--coral)]" target="_blank" rel="noopener">Supanova-Design-Skill</a></li>
-          <li><a href="https://oh-my-design.kr/" class="hover:text-[color:var(--coral)]" target="_blank" rel="noopener">oh-my-design</a></li>
+      <div class="pricing-grid">
+        <div class="price-card active">
+          <h3>얼리버드 신청</h3>
+          <div class="price-original">120,000원</div>
+          <div class="price-now"><span class="price-unit">₩</span>59,000<span class="price-unit">원</span></div>
+          <div class="price-period">4월 16일(목) ~ 4월 28일(화)</div>
+        </div>
+        <div class="price-card gen">
+          <h3>일반 신청</h3>
+          <div class="price-original">120,000원</div>
+          <div class="price-now"><span class="price-unit">₩</span>69,000<span class="price-unit">원</span></div>
+          <div class="price-period">4월 29일(수) ~ 5월 5일(화)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════ 일정 요약 ════════ -->
+    <section class="section" id="schedule-summary">
+      <div class="section-head">
+        <div>
+          <span class="mini-label">SCHEDULE · 일정</span>
+          <h2>언제·어떻게 진행되나요</h2>
+        </div>
+      </div>
+      <div class="schedule-card">
+        <div class="sc-icon">🎬</div>
+        <div class="sc-body">
+          <div class="sc-label">사전 VOD · 2시간</div>
+          <h3>2026.05.07 (목) 배포</h3>
+          <p>구글 AI 6종 기초 사용법을 영상으로 먼저 익힙니다. 실시간 연수 시간을 오롯이 실습에 쓰기 위한 준비.</p>
+        </div>
+      </div>
+      <div class="schedule-card">
+        <div class="sc-icon">💻</div>
+        <div class="sc-body">
+          <div class="sc-label">실시간 Zoom · 10시간</div>
+          <h3>5.13(수)·14(목) / 5.20(수)·21(목)</h3>
+          <p>저녁 7:00 ~ 9:30. 총 4회 · 회당 2시간 30분. 각 회차 강사가 직접 실습을 지도합니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════ 대상 · 준비물 ════════ -->
+    <section class="section" id="requirements">
+      <div class="section-head">
+        <div>
+          <span class="mini-label">REQUIREMENTS · 준비</span>
+          <h2>누가 들으면 좋을까요</h2>
+        </div>
+      </div>
+      <div class="req-card" style="margin-bottom:12px;">
+        <h3><span class="icon">🎓</span>연수 대상</h3>
+        <ul>
+          <li>AI 수업 자료 및 웹앱 개발에 관심 있는 선생님</li>
+          <li>AI 중점학교 및 디지털 선도학교 담당 선생님</li>
+          <li>구글 제미나이를 써봤지만 "그 다음"이 궁금한 선생님</li>
         </ul>
       </div>
-      <div>
-        <h5 class="font-semibold text-[color:var(--ink)] mb-3">연수 정보</h5>
-        <p class="mb-2">씨마스에듀 [내 교실을 바꾸는 최강 구글 AI 비서 TOP 6]</p>
-        <p class="mb-1">4회차 · 2026.05.21 (목) 19:00–21:30</p>
-        <p>강사: 이수미 · 김남희</p>
+      <div class="req-card">
+        <h3><span class="icon">✏️</span>필수 준비물</h3>
+        <ul>
+          <li>제미나이 <strong>유료 계정</strong></li>
+          <li>개인 G메일 계정으로 준비 필수</li>
+        </ul>
+        <div class="warning-box">⚠️ 학교 계정 사용 불가! 반드시 개인 Google 계정으로 준비해주세요.</div>
+      </div>
+    </section>
+
+    <!-- ════════ 커리큘럼 ════════ -->
+    <section class="section" id="curriculum">
+      <div class="section-head">
+        <div>
+          <span class="mini-label">CURRICULUM · 상세 일정</span>
+          <h2>5단계 커리큘럼</h2>
+          <p>사전 VOD → 실시간 4회. 각 회차가 다음 회차로 매끄럽게 이어집니다.</p>
+        </div>
+      </div>
+
+      <!-- Stage I: VOD -->
+      <div class="curriculum-group">
+        <div class="cg-head">I. 사전 VOD 제공</div>
+        <article class="session-card vod">
+          <div class="sess-num">0</div>
+          <div class="sess-date">5.7 (목)</div>
+          <h3>구글 AI 6종 사용법 (기초)</h3>
+          <ul>
+            <li>Opal · Gems · Mixboard · Flow · Stitch · AI Studio 한눈에</li>
+            <li>유료 계정 설정 · 개인 G메일 연동 체크</li>
+          </ul>
+          <div class="sess-foot">
+            <span class="tool-chip">구글 AI 6종</span>
+            <span class="instructor-chip">김남희·이수미</span>
+          </div>
+        </article>
+      </div>
+
+      <!-- Stage II -->
+      <div class="curriculum-group">
+        <div class="cg-head">II. 퇴근 시간을 앞당기는 업무 자동화 &amp; 스마트 AI 비서</div>
+        <article class="session-card">
+          <div class="sess-num">1</div>
+          <div class="sess-date">5.13 (수) <span class="sess-time">19:00~21:30</span></div>
+          <h3>수업용 웹앱 자동 생성 · 홍보물 생성</h3>
+          <ul>
+            <li>수업용 웹앱 자동 생성 실습</li>
+            <li>홍보물 생성 웹앱 실습</li>
+          </ul>
+          <div class="sess-foot">
+            <span class="tool-chip">Opal</span>
+            <span class="instructor-chip">김남희</span>
+          </div>
+        </article>
+        <article class="session-card">
+          <div class="sess-num">2</div>
+          <div class="sess-date">5.14 (목) <span class="sess-time">19:00~21:30</span></div>
+          <h3>AI 전담 비서 Gems 맞춤 설정 · 비주얼 학습자료</h3>
+          <ul>
+            <li>AI 전담 비서 Gems 맞춤 설정</li>
+            <li>비주얼 학습 자료 생성 실습</li>
+          </ul>
+          <div class="sess-foot">
+            <span class="tool-chip">Opal</span>
+            <span class="tool-chip">Gems</span>
+            <span class="instructor-chip">이수미</span>
+          </div>
+        </article>
+      </div>
+
+      <!-- Stage III -->
+      <div class="curriculum-group stageIII">
+        <div class="cg-head">III. 디자인 감각이 없어도, 개발 경험이 없어도 전문가처럼</div>
+        <article class="session-card">
+          <div class="sess-num">3</div>
+          <div class="sess-date">5.20 (수) <span class="sess-time">19:00~21:30</span></div>
+          <h3>캐릭터 &amp; 마스코트 · 앱 홍보 영상 제작</h3>
+          <ul>
+            <li>캐릭터 &amp; 마스코트 개발 실습</li>
+            <li>앱 홍보 영상 제작 실습</li>
+          </ul>
+          <div class="sess-foot">
+            <span class="tool-chip">Mixboard</span>
+            <span class="tool-chip">Flow</span>
+            <span class="instructor-chip">김남희</span>
+          </div>
+        </article>
+
+        <a href="./session-04/" class="session-card active" aria-label="4회차 자세히 보기">
+          <div class="sess-num">4</div>
+          <div class="sess-date">5.21 (목) <span class="sess-time">19:00~21:30</span></div>
+          <h3>UI/UX 디자인부터 배포까지 · 상호작용 앱 완성</h3>
+          <ul>
+            <li>UI/UX 디자인 프로토타입 (Stitch)</li>
+            <li>AI Studio Build로 기능 구현</li>
+            <li>GitHub 푸시 → Vercel 배포</li>
+            <li>★ designSkill 15개 스킬 + 16 프리셋 제공</li>
+          </ul>
+          <div class="sess-foot">
+            <span class="tool-chip">Stitch</span>
+            <span class="tool-chip">AI Studio</span>
+            <span class="tool-chip">GitHub</span>
+            <span class="tool-chip">Vercel</span>
+            <span class="instructor-chip">이수미</span>
+          </div>
+          <span class="cta-arrow">4회차 자세히 보기 →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ════════ 완성 결과물 ════════ -->
+    <div class="outcomes-panel">
+      <h2>연수가 끝나면 손에 쥐게 될 결과물</h2>
+      <p class="subtitle">5개 도구가 하나의 워크플로로 연결됩니다</p>
+      <div class="tool-grid">
+        <div class="tool-item">
+          <div class="tool-name">Gemini Gems</div>
+          <p>전담 비서</p>
+        </div>
+        <div class="tool-item opal">
+          <div class="tool-name">Opal</div>
+          <p>수업 자료 자동 생성 앱</p>
+        </div>
+        <div class="tool-item mix">
+          <div class="tool-name">Mixboard · Flow</div>
+          <p>이미지 무드보드 · 영상 제작</p>
+        </div>
+        <div class="tool-item aist">
+          <div class="tool-name">구글 AI 스튜디오</div>
+          <p>실시간 상호작용 웹앱</p>
+        </div>
+        <div class="tool-item stitch wide">
+          <div class="tool-name">Stitch</div>
+          <p>UI/UX 디자인 프로토타입 · GitHub → Vercel 배포까지 한 흐름</p>
+        </div>
       </div>
     </div>
-    <div class="mt-12 pt-8 border-t border-orange-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-      <p class="text-sm text-[color:var(--ink-2)]">
-        MIT License · © 2026 <a href="https://github.com/sumilee-phd" class="text-[color:var(--coral)] font-semibold hover:underline" target="_blank" rel="noopener">sumilee-phd</a>
-      </p>
-      <p class="text-sm italic text-[color:var(--ink-2)]">
-        "AI를 가르치는 교사에서, AI로 수업을 혁신하는 교사로"
-      </p>
+
+    <!-- ════════ Special Gift ════════ -->
+    <section class="section" id="gift">
+      <div class="gift-panel">
+        <h3>1월 씨마스에듀 [노트북LM &amp; AI스튜디오] 수강생 특별 혜택</h3>
+        <div class="gift-main">🎁 씨마스 신간 <strong>[바이브 코딩]</strong> 출간 즉시 증정</div>
+        <ol>
+          <li>1월에 진행된 [구글 노트북LM &amp; 구글 AI스튜디오]를 수강하신 분들 중</li>
+          <li>이번 [내 교실을 바꾸는 최강 구글 AI 비서 TOP 6]까지 동시 수강하실 경우,</li>
+          <li>26년 6월 출시 예정인 씨마스 신간 도서를 <strong>무료로</strong> 드립니다.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ════════ 환불 ════════ -->
+    <section class="section" id="refund">
+      <div class="refund-card">
+        <h3>⚠️ 환불 기한: <strong>5월 6일(수)까지</strong></h3>
+        <p>이후에는 VOD 배포와 연수 전용 단톡방 초대로 인해 <strong>환불이 불가</strong>합니다.</p>
+      </div>
+    </section>
+
+    <!-- ════════ Closing Quote ════════ -->
+    <div class="closing-quote">
+      <p>"AI를 가르치는 교사에서,<br>AI로 수업을 혁신하는 교사로"</p>
+      <span class="sig">씨마스에듀 · 2026.05</span>
     </div>
+  </main>
+
+  <!-- ─ Bottom bar ─ -->
+  <div class="bottom-bar" role="toolbar">
+    <button class="bar-small" id="topBtn" aria-label="상단으로"><span style="font-size:18px;">↑</span>상단</button>
+    <button class="primary-btn" id="applyBtn">
+      <span>🚀</span>연수 신청하기 · 씨마스 카톡
+    </button>
+    <button class="bar-small" id="shareBtn" aria-label="공유"><span style="font-size:18px;">🔗</span>공유</button>
   </div>
-</footer>
+
+  <!-- ─ TOC Drawer ─ -->
+  <div class="toc-drawer" id="tocDrawer" role="dialog" aria-label="목차">
+    <h2>목차</h2>
+    <a href="#cover">① 연수 소개</a>
+    <a href="#benefits">② 연수 혜택</a>
+    <a href="#pricing">③ 가격 · 얼리버드</a>
+    <a href="#schedule-summary">④ 일정 요약</a>
+    <a href="#requirements">⑤ 대상 · 준비물</a>
+    <a href="#curriculum">⑥ 5단계 커리큘럼</a>
+    <a href="./session-04/">⑦ 4회차 자세히 · designSkill →</a>
+    <a href="#gift">⑧ Special Gift</a>
+    <a href="#refund">⑨ 환불 안내</a>
+  </div>
+
+  <div class="toast" id="toast">링크가 복사되었어요</div>
+</div>
 
 <script>
-  // 스크롤 reveal 애니메이션
-  const io = new IntersectionObserver(
-    entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('is-visible')),
-    { threshold: 0.1 }
-  );
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-</script>
+  // Menu / TOC toggle
+  const menuBtn = document.getElementById('menuBtn');
+  const tocDrawer = document.getElementById('tocDrawer');
+  menuBtn.addEventListener('click', () => tocDrawer.classList.toggle('open'));
+  tocDrawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => tocDrawer.classList.remove('open')));
+  document.addEventListener('click', e => {
+    if (!tocDrawer.contains(e.target) && !menuBtn.contains(e.target)) tocDrawer.classList.remove('open');
+  });
 
+  // Theme toggle
+  const themeBtn = document.getElementById('themeBtn');
+  const root = document.documentElement;
+  const applyTheme = t => {
+    root.setAttribute('data-theme', t);
+    themeBtn.textContent = t === 'dark' ? '☾' : '☀';
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', t === 'dark' ? '#1E1B2E' : '#FFF8F5');
+    localStorage.setItem('theme', t);
+  };
+  applyTheme(localStorage.getItem('theme') || 'light');
+  themeBtn.addEventListener('click', () => {
+    applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  // Progress bar
+  const progressBar = document.getElementById('progressBar');
+  const updateProgress = () => {
+    const h = document.body.scrollHeight - window.innerHeight;
+    const pct = h > 0 ? (window.scrollY / h) * 100 : 0;
+    progressBar.style.width = pct + '%';
+  };
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  // Top
+  document.getElementById('topBtn').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Share
+  const toast = document.getElementById('toast');
+  const showToast = msg => {
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 1600);
+  };
+  document.getElementById('shareBtn').addEventListener('click', async () => {
+    const data = {
+      title: '내 교실을 바꾸는 최강 구글 AI 비서 TOP 6',
+      text: '씨마스에듀 연수 · 2026.05 · 이수미·김남희',
+      url: location.href
+    };
+    if (navigator.share) {
+      try { await navigator.share(data); } catch (e) {}
+    } else if (navigator.clipboard) {
+      await navigator.clipboard.writeText(location.href);
+      showToast('링크가 복사되었어요');
+    }
+  });
+
+  // Apply CTA
+  document.getElementById('applyBtn').addEventListener('click', () => {
+    showToast('씨마스 카카오톡 채널로 이동합니다');
+    setTimeout(() => window.open('http://pf.kakao.com/_cmclass', '_blank'), 400);
+  });
+</script>
 </body>
 </html>
