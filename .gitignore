@@ -8,3 +8,7 @@ build/
 .next/
 *.log
 Thumbs.db
+
+# 강사 전용 비공개 자료 (로컬에만 보관)
+session-*/script.md
+**/script-private.md
