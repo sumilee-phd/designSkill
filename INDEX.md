@@ -29,7 +29,7 @@
 | [14-vercel-deploy](./skills/14-vercel-deploy/SKILL.md) | GitHub → Vercel | 10분 |
 | [15-ai-studio-build](./skills/15-ai-studio-build/SKILL.md) | **★ Stitch UI에 기능 이식** | 30–60분 |
 
-## 🎨 16개 프리셋
+## 🎨 17개 프리셋
 
 ### 🇰🇷 한국 기업 (5)
 - [`toss`](./presets/korean/toss.md) — 토스 · 친근한 파란 · 볼드한 숫자
@@ -46,12 +46,13 @@
 - [`vercel`](./presets/global/vercel.md) — 버셀 · 흑백 · 기하
 - [`spotify`](./presets/global/spotify.md) — 스포티파이 · 네온 그린·블랙
 
-### 🏫 교육용 오리지널 (5)
+### 🏫 교육용 오리지널 (6)
 - [`classroom-pastel`](./presets/education/classroom-pastel.md) — 초등 · 파스텔 · 친근
 - [`lesson-clean`](./presets/education/lesson-clean.md) — 중등 수업자료 · 정돈
 - [`quiz-playful`](./presets/education/quiz-playful.md) — 퀴즈·게임 · 활기
 - [`parent-formal`](./presets/education/parent-formal.md) — 학부모 안내 · 공식
 - [`student-vibrant`](./presets/education/student-vibrant.md) — 고등학생 · 생동감
+- [`meal-bistro`](./presets/education/meal-bistro.md) 🍱 — 급식앱 · 크림+올리브 에디토리얼
 
 ## 🎯 11개 교사 시나리오 예제
 
