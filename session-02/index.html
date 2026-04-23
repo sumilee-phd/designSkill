@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>2회차 · Opal + Gems · 씨마스에듀 연수</title>
+<meta name="description" content="AI 전담 비서 Gems 맞춤 설정 + 비주얼 학습자료 생성. 232개 프롬프트 라이브러리 genGems · Gems+Opal 시뮬레이터까지." />
+<meta property="og:title" content="2회차 · Opal + Gems로 AI 전담 비서 세우기" />
+<meta property="og:description" content="씨마스에듀 연수 4회차 중 2회차 · 이수미 · 2026.05.14" />
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+
+<style>
+  :root {
+    --font-sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont,
+                 system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo',
+                 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    --gemini-blue:   #4285F4;
+    --gemini-green:  #22C55E;
+    --gemini-yellow: #FBBC04;
+    --gemini-red:    #EA4335;
+    --opal-purple:   #7C3AED;
+    --opal-violet:   #A78BFA;
+    --bg:            #F7F9FC;
+    --surface:       #FFFFFF;
+    --ink:           #0F172A;
+    --ink-2:         #475569;
+  }
+  html, body, * { font-family: var(--font-sans); word-break: keep-all; overflow-wrap: break-word; }
+  body { background: var(--bg); color: var(--ink); }
+  h1, h2, h3, h4 { letter-spacing: -0.025em; line-height: 1.2; }
+  p, li { line-height: 1.75; letter-spacing: -0.01em; }
+
+  .gemini-gradient { background: linear-gradient(135deg, #4285F4 0%, #22C55E 50%, #FBBC04 100%); }
+  .gemini-opal-gradient { background: linear-gradient(135deg, #4285F4 0%, #7C3AED 100%); }
+  .text-gemini-gradient {
+    background: linear-gradient(135deg, #4285F4 0%, #22C55E 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .text-opal-gradient {
+    background: linear-gradient(135deg, #7C3AED 0%, #A78BFA 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+
+  .card-shadow { box-shadow: 0 10px 40px -15px rgba(66, 133, 244, 0.2); }
+  .card-shadow-lg { box-shadow: 0 25px 50px -20px rgba(66, 133, 244, 0.3); }
+  .card-shadow-purple { box-shadow: 0 10px 40px -15px rgba(124, 58, 237, 0.25); }
+  .card-shadow-purple-lg { box-shadow: 0 25px 50px -20px rgba(124, 58, 237, 0.35); }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal { opacity: 0; }
+  .reveal.is-visible { animation: fade-up 0.7s ease-out forwards; }
+
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+  }
+  .float-slow { animation: float-slow 5s ease-in-out infinite; }
+
+  .blob {
+    position: absolute; border-radius: 50%;
+    filter: blur(80px); opacity: 0.4; z-index: 0; pointer-events: none;
+  }
+
+  /* Gems node mini preview */
+  .node-yellow { background: linear-gradient(135deg, #FEF3C7, #FCD34D); border: 2px solid #F59E0B; }
+  .node-blue   { background: linear-gradient(135deg, #DBEAFE, #60A5FA); border: 2px solid #2563EB; }
+  .node-green  { background: linear-gradient(135deg, #D1FAE5, #34D399); border: 2px solid #059669; }
+</style>
+</head>
+<body>
+
+<!-- ════════════ BREADCRUMB ════════════ -->
+<div class="fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white text-center text-xs sm:text-sm font-semibold py-2 px-4">
+  <a href="../" class="inline-flex items-center gap-2 hover:underline">
+    <span>←</span>
+    <span>씨마스에듀 연수 메인</span>
+  </a>
+  <span class="mx-3 opacity-60">/</span>
+  <span>2회차 · Opal + Gems로 AI 비서 세우기</span>
+  <span class="mx-3 opacity-60 hidden sm:inline">·</span>
+  <span class="opacity-80 hidden sm:inline">5.14 (목) 19:00</span>
+</div>
+
+<!-- ════════════ NAV ════════════ -->
+<nav class="fixed top-[36px] left-0 right-0 z-50 backdrop-blur-md bg-white/70 border-b border-blue-100">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2 font-bold text-lg">
+      <span class="w-8 h-8 rounded-xl gemini-opal-gradient flex items-center justify-center text-white">💎</span>
+      <span>Opal × Gems</span>
+    </a>
+    <ul class="hidden md:flex items-center gap-8 text-sm text-slate-700">
+      <li><a href="../" class="hover:text-[color:var(--gemini-blue)]">← 연수 메인</a></li>
+      <li><a href="#flow" class="hover:text-[color:var(--gemini-blue)]">워크플로</a></li>
+      <li><a href="#tools" class="hover:text-[color:var(--gemini-blue)]">실습 도구</a></li>
+      <li><a href="#scenarios" class="hover:text-[color:var(--gemini-blue)]">실습 시나리오</a></li>
+    </ul>
+    <a href="../session-04/" class="px-4 py-2 rounded-full bg-gradient-to-r from-orange-400 to-pink-500 text-white text-sm font-semibold card-shadow hover:-translate-y-0.5 transition-all duration-300">
+      4회차 이동 →
+    </a>
+  </div>
+</nav>
+
+<!-- ════════════ HERO ════════════ -->
+<section id="top" class="relative overflow-hidden pt-40 pb-24">
+  <div class="blob" style="top:-50px; left:-80px; width:450px; height:450px; background:#4285F4;"></div>
+  <div class="blob" style="top:80px; right:-100px; width:500px; height:500px; background:#7C3AED;"></div>
+  <div class="blob" style="bottom:-100px; left:40%; width:400px; height:400px; background:#22C55E;"></div>
+
+  <div class="relative max-w-6xl mx-auto px-6">
+    <div class="reveal inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/70 backdrop-blur border border-blue-100 text-sm text-slate-600">
+      <span class="w-2 h-2 rounded-full bg-[color:var(--gemini-blue)] animate-pulse"></span>
+      씨마스에듀 연수 2회차 · 2026.05.14 (목) 19:00–21:30 · 이수미
+    </div>
+
+    <h1 class="reveal mt-8 text-5xl md:text-7xl font-bold leading-[1.05]">
+      <span class="text-gemini-gradient">Opal</span>로 앱 만들고<br/>
+      <span class="text-opal-gradient">Gems</span>로 전담 비서 세우기
+    </h1>
+
+    <p class="reveal mt-6 text-xl md:text-2xl text-slate-600 max-w-3xl leading-relaxed">
+      프롬프트 한 번 쓰고 끝이 아니라 <strong class="text-[color:var(--gemini-blue)]">AI 전담 비서</strong>를 맞춤 설정하고,
+      노드 에디터로 <strong class="text-[color:var(--opal-purple)]">인터랙티브 웹앱</strong>까지 만드는 두 시간.
+    </p>
+
+    <div class="reveal mt-10 flex flex-wrap gap-4">
+      <a href="#tools"
+         class="px-8 py-4 rounded-full gemini-opal-gradient text-white font-semibold text-lg card-shadow-purple-lg hover:-translate-y-0.5 transition-all duration-300">
+        <iconify-icon icon="solar:play-bold-duotone" inline></iconify-icon>
+        실습 도구 바로 체험
+      </a>
+      <a href="#scenarios"
+         class="px-8 py-4 rounded-full bg-white/70 backdrop-blur border border-blue-200 text-slate-800 font-semibold text-lg hover:bg-white transition-all duration-300">
+        실습 시나리오 보기
+      </a>
+    </div>
+
+    <div class="reveal mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="bg-white/80 backdrop-blur rounded-2xl p-6 card-shadow">
+        <div class="text-5xl font-black text-gemini-gradient">232</div>
+        <div class="mt-2 text-sm text-slate-600 font-medium">Gems 프롬프트 (genGems)</div>
+      </div>
+      <div class="bg-white/80 backdrop-blur rounded-2xl p-6 card-shadow-purple">
+        <div class="text-5xl font-black text-opal-gradient">3</div>
+        <div class="mt-2 text-sm text-slate-600 font-medium">Opal 노드 색상 체계</div>
+      </div>
+      <div class="bg-white/80 backdrop-blur rounded-2xl p-6 card-shadow">
+        <div class="text-5xl font-black text-[color:var(--gemini-green)]">150<span class="text-3xl">분</span></div>
+        <div class="mt-2 text-sm text-slate-600 font-medium">실시간 Zoom</div>
+      </div>
+      <div class="bg-white/80 backdrop-blur rounded-2xl p-6 card-shadow">
+        <div class="text-5xl font-black text-[color:var(--gemini-blue)]">0<span class="text-3xl">원</span></div>
+        <div class="mt-2 text-sm text-slate-600 font-medium">실습 도구 비용</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ WORKFLOW ════════════ -->
+<section id="flow" class="py-24 bg-white/60 border-y border-blue-100">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="reveal max-w-2xl">
+      <div class="text-sm font-semibold text-[color:var(--gemini-blue)] uppercase tracking-wider">01 · Workflow</div>
+      <h2 class="mt-3 text-4xl md:text-5xl font-bold">Gems → Opal → 나만의 웹앱</h2>
+      <p class="mt-4 text-lg text-slate-600">
+        <strong>Gems</strong>로 AI에게 역할·말투·지식 범위를 설정하고, <strong>Opal</strong> 노드 에디터로 입력·생성·출력을 연결하면
+        프롬프트 한 줄로는 만들 수 없던 <strong>상호작용하는 앱</strong>이 완성됩니다.
+      </p>
+    </div>
+
+    <div class="mt-14 grid md:grid-cols-3 gap-6 relative">
+      <!-- Step 1 -->
+      <article class="reveal bg-white rounded-3xl p-7 card-shadow border border-blue-100 relative">
+        <div class="absolute -top-4 left-7 px-3 py-1 rounded-full bg-[color:var(--gemini-blue)] text-white text-xs font-black">STEP 1</div>
+        <div class="flex items-center gap-3 mt-2 mb-4">
+          <span class="text-3xl">💎</span>
+          <h3 class="text-xl font-bold">Gems 페이지</h3>
+        </div>
+        <p class="text-slate-600 leading-relaxed">
+          자연어로 "어떤 비서가 필요한지" 서술합니다. 예: "4학년 과학 수업에서 식물의 한살이를 설명하는 친절한 선생님"
+        </p>
+        <div class="mt-4 p-3 rounded-xl bg-blue-50 text-sm text-blue-900 font-mono">
+          🟦 input: 학생 질문<br/>
+          🤖 persona: 다정한 과학 선생님<br/>
+          📚 knowledge: 4-2학기 과학 교과서
+        </div>
+      </article>
+
+      <!-- Step 2 -->
+      <article class="reveal bg-white rounded-3xl p-7 card-shadow-purple border border-purple-100 relative">
+        <div class="absolute -top-4 left-7 px-3 py-1 rounded-full bg-[color:var(--opal-purple)] text-white text-xs font-black">STEP 2</div>
+        <div class="flex items-center gap-3 mt-2 mb-4">
+          <span class="text-3xl">🔮</span>
+          <h3 class="text-xl font-bold">Opal 노드 에디터</h3>
+        </div>
+        <p class="text-slate-600 leading-relaxed">
+          입력 → 생성 → 출력을 시각적으로 연결합니다. 3가지 색으로 구분된 노드를 끌어다 놓으면 완성.
+        </p>
+        <div class="mt-4 flex gap-2 items-center justify-center flex-wrap">
+          <span class="node-yellow rounded-lg px-3 py-2 text-xs font-bold">🟡 Input</span>
+          <span class="text-slate-400">→</span>
+          <span class="node-blue rounded-lg px-3 py-2 text-xs font-bold">🔵 Generate</span>
+          <span class="text-slate-400">→</span>
+          <span class="node-green rounded-lg px-3 py-2 text-xs font-bold">🟢 Output</span>
+        </div>
+      </article>
+
+      <!-- Step 3 -->
+      <article class="reveal bg-white rounded-3xl p-7 card-shadow border border-green-100 relative">
+        <div class="absolute -top-4 left-7 px-3 py-1 rounded-full bg-[color:var(--gemini-green)] text-white text-xs font-black">STEP 3</div>
+        <div class="flex items-center gap-3 mt-2 mb-4">
+          <span class="text-3xl">✨</span>
+          <h3 class="text-xl font-bold">앱 미리보기</h3>
+        </div>
+        <p class="text-slate-600 leading-relaxed">
+          만든 앱이 실제로 동작하는 미리보기를 확인. 학생에게 URL 또는 QR로 공유하면 끝.
+        </p>
+        <div class="mt-4 p-3 rounded-xl bg-green-50 text-sm text-green-900">
+          <div class="font-bold">✅ 즉시 완성</div>
+          <div class="text-xs mt-1">배포·로그인·결제 없이 수업 바로 투입</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ TOOLS ════════════ -->
+<section id="tools" class="py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="reveal max-w-2xl">
+      <div class="text-sm font-semibold text-[color:var(--gemini-blue)] uppercase tracking-wider">02 · Tools</div>
+      <h2 class="mt-3 text-4xl md:text-5xl font-bold">오늘 실습에서 쓸 두 가지 도구</h2>
+      <p class="mt-4 text-lg text-slate-600">
+        설치·로그인·API 키 없이 브라우저만으로 바로 체험할 수 있습니다.
+      </p>
+    </div>
+
+    <div class="mt-14 grid lg:grid-cols-2 gap-6">
+      <!-- Tool 1: SuperGems Simulator -->
+      <article class="reveal bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 rounded-3xl p-8 card-shadow-lg border-2 border-blue-200 flex flex-col">
+        <div class="flex items-start justify-between mb-5">
+          <div class="flex items-center gap-3">
+            <div class="w-14 h-14 rounded-2xl gemini-opal-gradient flex items-center justify-center text-white text-2xl">🔮</div>
+            <div>
+              <div class="text-xs font-mono text-[color:var(--opal-purple)] font-bold">TOOL 01 · 인터랙티브</div>
+              <h3 class="text-2xl font-black">SuperGems Simulator</h3>
+            </div>
+          </div>
+        </div>
+        <p class="text-slate-700 leading-relaxed">
+          <strong>Gems + Opal Editor</strong>를 체험할 수 있는 웹 시뮬레이터. 설치 없이 브라우저에서 노드 에디터를 직접 움직여보며
+          "자연어 설명 → 시각적 워크플로 → 실제 앱"의 변환을 배웁니다.
+        </p>
+
+        <ul class="mt-5 space-y-2 text-sm text-slate-600">
+          <li class="flex gap-2">
+            <span class="text-[color:var(--gemini-blue)] font-bold">▸</span>
+            <span><strong>Gems 페이지</strong>: 원하는 AI 미니앱을 자연어로 서술</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="text-[color:var(--opal-purple)] font-bold">▸</span>
+            <span><strong>Opal 에디터</strong>: 🟡 Input → 🔵 Generate → 🟢 Output 노드 연결</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="text-[color:var(--gemini-green)] font-bold">▸</span>
+            <span><strong>앱 미리보기</strong>: 완성된 앱의 실시간 시뮬레이션</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="text-slate-400 font-bold">▸</span>
+            <span>단일 HTML 파일 · 오프라인 동작 · 100% 한국어</span>
+          </li>
+        </ul>
+
+        <div class="mt-auto pt-6 flex flex-wrap gap-3">
+          <a href="https://sumilee-phd.github.io/supergems_simulator/" target="_blank" rel="noopener"
+             class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full gemini-opal-gradient text-white font-semibold card-shadow-purple hover:-translate-y-0.5 transition-all duration-300">
+            <iconify-icon icon="solar:play-circle-bold-duotone" width="20"></iconify-icon>
+            라이브 데모 열기
+          </a>
+          <a href="https://github.com/sumilee-phd/supergems_simulator" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white border border-slate-200 text-slate-800 font-semibold hover:-translate-y-0.5 transition-all duration-300">
+            <iconify-icon icon="mdi:github" width="20"></iconify-icon>
+            GitHub
+          </a>
+        </div>
+      </article>
+
+      <!-- Tool 2: genGems -->
+      <article class="reveal bg-gradient-to-br from-green-50 via-emerald-50 to-blue-50 rounded-3xl p-8 card-shadow-lg border-2 border-green-200 flex flex-col">
+        <div class="flex items-start justify-between mb-5">
+          <div class="flex items-center gap-3">
+            <div class="w-14 h-14 rounded-2xl gemini-gradient flex items-center justify-center text-white text-2xl">💎</div>
+            <div>
+              <div class="text-xs font-mono text-[color:var(--gemini-green)] font-bold">TOOL 02 · 라이브러리</div>
+              <h3 class="text-2xl font-black">genGems</h3>
+            </div>
+          </div>
+          <span class="px-3 py-1 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 text-white text-xs font-black">232개</span>
+        </div>
+        <p class="text-slate-700 leading-relaxed">
+          <strong>232개의 Gems 프롬프트 라이브러리</strong>. 연구·수업 설계·학부모 안내·학생 상담까지 카테고리별로 정리된 카드에서
+          원하는 걸 골라 <strong>복사 → 붙여넣기</strong>만 하면 Gemini·ChatGPT·Claude 어디서든 작동합니다.
+        </p>
+
+        <ul class="mt-5 space-y-2 text-sm text-slate-600">
+          <li class="flex gap-2">
+            <span class="text-[color:var(--gemini-blue)] font-bold">▸</span>
+            <span>카테고리별 검색 · 카드 뷰 · 페이지네이션</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="text-[color:var(--gemini-green)] font-bold">▸</span>
+            <span><strong>설치 불필요</strong>: 브라우저만 있으면 끝 · API 키·로그인 ❌</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="text-[color:var(--opal-purple)] font-bold">▸</span>
+            <span>Gemini·ChatGPT·Claude 등 <strong>여러 AI 호환</strong></span>
+          </li>
+          <li class="flex gap-2">
+            <span class="text-slate-400 font-bold">▸</span>
+            <span>React + TypeScript · GitHub Pages 자동 배포</span>
+          </li>
+        </ul>
+
+        <div class="mt-auto pt-6 flex flex-wrap gap-3">
+          <a href="https://sumilee-phd.github.io/genGems/" target="_blank" rel="noopener"
+             class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full gemini-gradient text-white font-semibold card-shadow hover:-translate-y-0.5 transition-all duration-300">
+            <iconify-icon icon="solar:library-bold-duotone" width="20"></iconify-icon>
+            232개 프롬프트 둘러보기
+          </a>
+          <a href="https://github.com/sumilee-phd/genGems" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white border border-slate-200 text-slate-800 font-semibold hover:-translate-y-0.5 transition-all duration-300">
+            <iconify-icon icon="mdi:github" width="20"></iconify-icon>
+            GitHub
+          </a>
+        </div>
+      </article>
+    </div>
+
+    <!-- Integration Note -->
+    <div class="reveal mt-10 p-6 rounded-3xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white card-shadow-purple-lg">
+      <div class="flex items-start gap-4">
+        <div class="text-4xl">🎯</div>
+        <div>
+          <h3 class="text-xl font-bold">두 도구를 함께 쓰면</h3>
+          <p class="mt-2 text-white/90 leading-relaxed">
+            genGems에서 원하는 프롬프트를 골라 복사 → SuperGems Simulator에서 붙여넣기 → Opal 노드로 연결 →
+            <strong>내 교실 전용 AI 미니앱</strong>이 완성됩니다. 오늘 실습에서 이 흐름을 직접 만들어봅니다.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ SCENARIOS ════════════ -->
+<section id="scenarios" class="py-24 bg-white/60 border-y border-blue-100">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="reveal max-w-2xl">
+      <div class="text-sm font-semibold text-[color:var(--gemini-blue)] uppercase tracking-wider">03 · Scenarios</div>
+      <h2 class="mt-3 text-4xl md:text-5xl font-bold">2회차 실습 시나리오</h2>
+      <p class="mt-4 text-lg text-slate-600">
+        포스터에 공지된 두 개 실습 주제. 오늘 2시간 30분 안에 두 가지 모두 완성합니다.
+      </p>
+    </div>
+
+    <div class="mt-14 grid md:grid-cols-2 gap-6">
+      <article class="reveal bg-white rounded-3xl p-8 card-shadow border border-blue-100">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-12 h-12 rounded-2xl bg-blue-100 flex items-center justify-center text-2xl">🤝</div>
+          <div>
+            <div class="text-xs font-mono text-[color:var(--gemini-blue)] font-bold">실습 ①</div>
+            <h3 class="text-xl font-black">AI 전담 비서 Gems 맞춤 설정</h3>
+          </div>
+        </div>
+        <p class="text-slate-600 leading-relaxed">
+          내 반 · 내 과목 · 내 교수 스타일에 맞춘 AI 비서를 만듭니다.
+          페르소나 · 말투 · 지식 범위 · 금지 사항까지 세세하게 튜닝.
+        </p>
+        <div class="mt-4 space-y-1.5 text-sm">
+          <div class="flex items-center gap-2 text-slate-600"><span class="text-[color:var(--gemini-blue)]">•</span> 역할 정의 (선생님 · 튜터 · 상담자)</div>
+          <div class="flex items-center gap-2 text-slate-600"><span class="text-[color:var(--gemini-blue)]">•</span> 학년 눈높이 말투 (초등 저/고 · 중·고)</div>
+          <div class="flex items-center gap-2 text-slate-600"><span class="text-[color:var(--gemini-blue)]">•</span> 교과 자료 · 금지 주제 주입</div>
+          <div class="flex items-center gap-2 text-slate-600"><span class="text-[color:var(--gemini-blue)]">•</span> 학생 테스트 · 반복 수정</div>
+        </div>
+      </article>
+
+      <article class="reveal bg-white rounded-3xl p-8 card-shadow-purple border border-purple-100">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-12 h-12 rounded-2xl bg-purple-100 flex items-center justify-center text-2xl">🎨</div>
+          <div>
+            <div class="text-xs font-mono text-[color:var(--opal-purple)] font-bold">실습 ②</div>
+            <h3 class="text-xl font-black">비주얼 학습자료 생성</h3>
+          </div>
+        </div>
+        <p class="text-slate-600 leading-relaxed">
+          Opal + Gems로 학생이 입력하면 <strong>그림·도표·인포그래픽</strong>으로 설명하는 미니앱을 제작.
+          글로만 설명하던 개념을 학생 눈높이 비주얼로 즉시 변환.
+        </p>
+        <div class="mt-4 space-y-1.5 text-sm">
+          <div class="flex items-center gap-2 text-slate-600"><span class="text-[color:var(--opal-purple)]">•</span> 입력: 학생 질문 · 개념</div>
+          <div class="flex items-center gap-2 text-slate-600"><span class="text-[color:var(--opal-purple)]">•</span> 생성: Imagen · 도표 프롬프트</div>
+          <div class="flex items-center gap-2 text-slate-600"><span class="text-[color:var(--opal-purple)]">•</span> 출력: 카드형 비주얼 + 설명</div>
+          <div class="flex items-center gap-2 text-slate-600"><span class="text-[color:var(--opal-purple)]">•</span> 학생에게 URL/QR 공유</div>
+        </div>
+      </article>
+    </div>
+
+    <div class="reveal mt-10 p-6 rounded-2xl bg-amber-50 border border-amber-200">
+      <div class="flex items-start gap-3">
+        <iconify-icon icon="solar:info-circle-bold-duotone" width="28" class="text-amber-600 flex-shrink-0"></iconify-icon>
+        <div>
+          <h4 class="font-bold text-amber-900">실습 준비물 체크</h4>
+          <p class="mt-1 text-sm text-amber-800 leading-relaxed">
+            <strong>제미나이 유료 계정 필수</strong> · 개인 G메일로만 (학교 계정 불가) · Chrome/Edge 최신 버전 권장 ·
+            실습 전 <a href="https://sumilee-phd.github.io/supergems_simulator/" target="_blank" class="underline font-bold">시뮬레이터</a>를 먼저 둘러보시면 이해가 빨라집니다.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ NEXT ════════════ -->
+<section class="py-24">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <div class="reveal bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 rounded-[2.5rem] p-12 md:p-16 card-shadow-purple-lg border border-purple-200">
+      <div class="text-sm font-semibold text-[color:var(--opal-purple)] uppercase tracking-wider">Next Session</div>
+      <h2 class="mt-3 text-4xl md:text-5xl font-bold">오늘 만든 AI 비서,<br/>다음 주엔 <span class="bg-gradient-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent">"진짜 웹앱"</span>으로</h2>
+      <p class="mt-5 text-lg text-slate-600 max-w-2xl mx-auto">
+        4회차(5.21)에서는 Stitch로 UI/UX 디자인을 만들고, AI Studio Build로 기능을 구현하고,
+        GitHub → Vercel로 실제 배포까지. designSkill 15개 스킬과 16개 프리셋이 제공됩니다.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4 justify-center">
+        <a href="../session-04/"
+           class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-orange-400 to-pink-500 text-white font-semibold text-lg card-shadow-purple-lg hover:-translate-y-0.5 transition-all duration-300">
+          <iconify-icon icon="solar:rocket-2-bold-duotone" width="24"></iconify-icon>
+          4회차 designSkill 미리 보기
+        </a>
+        <a href="../"
+           class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white border border-slate-200 text-slate-800 font-semibold text-lg hover:-translate-y-0.5 transition-all duration-300">
+          <iconify-icon icon="solar:home-2-bold-duotone" width="24"></iconify-icon>
+          연수 메인으로
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ FOOTER ════════════ -->
+<footer class="py-16 border-t border-blue-100 bg-white/50">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid md:grid-cols-3 gap-10 text-sm text-slate-600">
+      <div>
+        <div class="flex items-center gap-2 font-bold text-slate-900 text-lg mb-3">
+          <span class="w-8 h-8 rounded-xl gemini-opal-gradient flex items-center justify-center text-white">💎</span>
+          <span>Opal × Gems · 2회차</span>
+        </div>
+        <p>씨마스에듀 [내 교실을 바꾸는 최강 구글 AI 비서 TOP 6] 연수 2회차 전용 자료실.</p>
+      </div>
+      <div>
+        <h5 class="font-semibold text-slate-900 mb-3">실습 도구</h5>
+        <ul class="space-y-1.5">
+          <li><a href="https://sumilee-phd.github.io/supergems_simulator/" class="hover:text-[color:var(--opal-purple)]" target="_blank" rel="noopener">SuperGems Simulator · 라이브 데모</a></li>
+          <li><a href="https://sumilee-phd.github.io/genGems/" class="hover:text-[color:var(--gemini-blue)]" target="_blank" rel="noopener">genGems · 프롬프트 라이브러리</a></li>
+          <li><a href="https://github.com/sumilee-phd/supergems_simulator" class="hover:text-slate-900" target="_blank" rel="noopener">SuperGems GitHub</a></li>
+          <li><a href="https://github.com/sumilee-phd/genGems" class="hover:text-slate-900" target="_blank" rel="noopener">genGems GitHub</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-semibold text-slate-900 mb-3">연수 정보</h5>
+        <p class="mb-1">2회차 · 2026.05.14 (목) 19:00~21:30</p>
+        <p class="mb-1">도구: Opal · Gems</p>
+        <p>강사: 이수미</p>
+      </div>
+    </div>
+    <div class="mt-12 pt-8 border-t border-blue-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <p class="text-sm text-slate-600">MIT License · © 2026 <a href="https://github.com/sumilee-phd" class="text-[color:var(--gemini-blue)] font-semibold hover:underline" target="_blank" rel="noopener">sumilee-phd</a></p>
+      <p class="text-sm italic text-slate-600">"AI를 가르치는 교사에서, AI로 수업을 혁신하는 교사로"</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(
+    entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('is-visible')),
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
