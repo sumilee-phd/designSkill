@@ -1,6 +1,6 @@
 # 📇 designSkill 전체 카탈로그
 
-## 🧩 14개 스킬 상세
+## 🧩 15개 스킬 상세
 
 ### 📐 기본 엔진 (01-04)
 | 스킬 | 호출 방법 | 핵심 출력 |
@@ -27,6 +27,7 @@
 | [12-remotion-video](./skills/12-remotion-video/SKILL.md) | 앱 소개 영상 | 20분 |
 | [13-figma-import](./skills/13-figma-import/SKILL.md) | Figma → 코드 | 10분 (MCP 필요) |
 | [14-vercel-deploy](./skills/14-vercel-deploy/SKILL.md) | GitHub → Vercel | 10분 |
+| [15-ai-studio-build](./skills/15-ai-studio-build/SKILL.md) | **★ Stitch UI에 기능 이식** | 30–60분 |
 
 ## 🎨 16개 프리셋
 
